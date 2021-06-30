@@ -1,0 +1,25 @@
+{
+  "name": "pro-team",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xunaxidonita/Pro-Team.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Xunaxidonita/Pro-Team/issues"
+  },
+  "homepage": "https://github.com/Xunaxidonita/Pro-Team#readme",
+  "dependencies": {
+    "apollo-server-express": "^2.25.2",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "mongodb": "^3.6.9"
+  }
+}
