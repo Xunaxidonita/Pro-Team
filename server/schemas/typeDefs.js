@@ -5,12 +5,20 @@ const typeDefs = gql `
 type Project {
     _id: ID
     projectName: String
-    projectText: String
     assignedTo: [User]
     taskCount: Int
     tasks: [Task]
     dueDate: String
     
+}
+
+type Task {
+    _id: ID
+    taskName: String
+    taskText: String
+    assignedTo: [User]
+    dueDate: String
+
 }
 type User {
     _id: ID
