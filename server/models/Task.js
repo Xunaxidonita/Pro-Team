@@ -29,4 +29,4 @@ const taskSchema = new Schema(
   }
 );
 
-module.exports = reactionSchema;
+module.exports = taskSchema;
