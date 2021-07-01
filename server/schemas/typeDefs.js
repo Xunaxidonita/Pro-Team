@@ -21,7 +21,7 @@ type Task {
 
 }
 type User {
-    _id: ID
+    _id: ID 
     username: String
     email: String
     projectCount: Int
@@ -35,6 +35,10 @@ type Query {
 }
 
 `;
+// Should make username unique, otherwise need get user by id instead
+// of get user by username
+// Not sure what to do with conversations
+
 
 // export typeDefs
 module.exports = typeDefs;
