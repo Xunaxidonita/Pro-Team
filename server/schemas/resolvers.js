@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models');
+const { User, Task, Project } = require('../models');
 
 
 
