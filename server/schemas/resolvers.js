@@ -1,3 +1,9 @@
+const { User, Thought } = require('../models');
+
+
+
+
+
 // GET (Queries):
 
 // get my user info -check
@@ -8,7 +14,7 @@
 // get project by project id (should use id instead of name 
 // in case multiple projects have same name) -check
 // get all tasks for a user --check
-// get all tasks for a project --check
+// get all tasks for a project --
 
 // POST, PUT, DELETE (Mutations):
 
