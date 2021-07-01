@@ -3,22 +3,25 @@ const { Schema, model } = require('mongoose');
 
 const projectSchema = new Schema(
   {
-    thoughtText: {
+    projectName: {
       type: String,
-      required: 'You need to leave a thought!',
+      required: 'Please give your project a name!',
       minlength: 1,
       maxlength: 280
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: timestamp => dateFormat(timestamp)
+    assignedTo: {
+      type: String,
+      minlength: 1
+    },
+    dueDate: {
+        type: Date,
+        get: timestamp => dateFormat(timestamp)
     },
     username: {
       type: String,
       required: true
     },
-    reactions: [reactionSchema]
+    tasks: [taskSchema]
   },
   {
     toJSON: {

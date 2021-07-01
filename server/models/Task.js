@@ -5,7 +5,7 @@ const taskSchema = new Schema(
   {
     taskName: {
       type: String,
-      required: true,
+      required: 'Please give your task a name!',
       maxlength: 140,
     },
     taskText: {
