@@ -1,13 +1,14 @@
 // GET (Queries):
 
-// get all users
-// get single user by username (or by id)*
-// get all users for project
-// get all projects for a user
+// get my user info -check
+// get all users -check
+// get single user by username (or by id)* - check
+// get all users for project - check
+// get all projects for a user - check
 // get project by project id (should use id instead of name 
-// in case multiple projects have same name)
-// get all tasks for a user
-// get all tasks for a project
+// in case multiple projects have same name) -check
+// get all tasks for a user --check
+// get all tasks for a project --check
 
 // POST, PUT, DELETE (Mutations):
 

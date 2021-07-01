@@ -30,6 +30,15 @@ type User {
     tasks: [Task]
 
 type Query {
+    me: User
+    users: [User]
+    user(username: String!): User
+    user(projectId): User
+    projects(username): Project
+    project(projectId): Project
+    tasks(username): Task
+    tasks(projectId): Task
+
 
 }
 }
