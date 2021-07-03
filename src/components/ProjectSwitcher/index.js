@@ -16,13 +16,13 @@ const Sidebar = () => {
 
   return (
     <Grid columns={1}>
-      <Grid.Column>
+      {/* <Grid.Column>
         <Checkbox
           checked={visible}
           label={{ children: <code>visible</code> }}
           onChange={(e, data) => setVisible(data.checked)}
         />
-      </Grid.Column>
+      </Grid.Column> */}
 
       <Grid.Column>
         <Sidebar.Pushable as={Segment.Group} raised>
