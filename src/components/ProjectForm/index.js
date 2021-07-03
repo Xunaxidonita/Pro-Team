@@ -5,11 +5,11 @@ const ProjectForm = () => (
   <Form>
     <Form.Field>
       <label>Project Title</label>
-      <input placeholder='project name' />
+      <input placeholder='Title' />
     </Form.Field>
     <Form.Field>
       <label>Description</label>
-      <input placeholder='project description' />
+      <input placeholder='Description' />
     </Form.Field>
     <h3>Members:</h3>
     {/*  need ability to add & populate members here */}
