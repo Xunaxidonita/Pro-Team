@@ -6,7 +6,7 @@ import {
 import './App.css';
 import LoginPage from './components/LoginPage';
 import ProjectsPage from './components/ProjectsPage';
-// import NewProjectPage from './components/NewProjectsPage'
+import NewProjectPage from './components/NewProjectPage'
 
 import 'semantic-ui-css/semantic.min.css'
 
@@ -17,12 +17,12 @@ function App() {
         <Route exact path="/">
           <LoginPage></LoginPage>
         </Route>
-        <Route path="/projects">
+        <Route exact path="/projects">
           <ProjectsPage />
         </Route>
-        {/* <Route path="/projects/new">
+       <Route path="/projects/new">
           <NewProjectPage />
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );
