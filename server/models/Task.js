@@ -37,4 +37,4 @@ taskSchema.virtual('taskCount').get(function() {
   
   const Task = model('Task', taskSchema);
 
-module.exports = taskSchema;
+module.exports = Task;

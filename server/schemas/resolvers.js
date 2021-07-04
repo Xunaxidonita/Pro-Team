@@ -1,7 +1,28 @@
 const { User, Task, Project } = require('../models');
 
 
+const resolvers = {
+    Query: {
+        me: async (parent, args) => {
+            const userData = await User.findOne({})
+            .select('-__v -password');
 
+            return userData;
+        }
+    },
+
+    users: async () => {
+        return Users.find()
+        .select('-__v -password');
+
+    },
+
+    user: async (parent, { username }) => {
+        return User.findOne({ username })
+        .select('-__v -password');
+    }
+
+}
 
 
 // GET (Queries):
@@ -30,3 +51,5 @@ const { User, Task, Project } = require('../models');
 
 // * Should make username unique, otherwise need get user by id instead
 // of get user by username
+
+module.exports = resolvers;

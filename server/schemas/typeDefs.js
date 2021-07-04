@@ -9,7 +9,6 @@ type Project {
     taskCount: Int
     tasks: [Task]
     dueDate: String
-    
 }
 
 type Task {
@@ -18,8 +17,8 @@ type Task {
     taskText: String
     assignedTo: [User]
     dueDate: String
-
 }
+
 type User {
     _id: ID 
     username: String
@@ -28,6 +27,7 @@ type User {
     taskCount: Int
     projects: [Project]
     tasks: [Task]
+}
 
 type Query {
     me: User
@@ -38,11 +38,7 @@ type Query {
     project(projectId): Project
     tasks(username): Task
     tasks(projectId): Task
-
-
 }
-}
-
 `;
 // Should make username unique, otherwise need get user by id instead
 // of get user by username
