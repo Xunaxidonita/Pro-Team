@@ -32,12 +32,12 @@ type User {
 type Query {
     me: User
     users: [User]
-    user(username: String!): User
-    user(projectId): User
-    projects(username): Project
-    project(projectId): Project
-    tasks(username): Task
-    tasks(projectId): Task
+    userByUsername(username: String): User
+    projsByUser(projectId: ID): [Project]
+    projects(username: String): [Project]
+    project(projectId: ID): Project
+    userTasks(username: String): [Task]
+    projTasks(projectId: ID): [Task]
 }
 `;
 // Should make username unique, otherwise need get user by id instead

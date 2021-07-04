@@ -8,20 +8,51 @@ const resolvers = {
             .select('-__v -password');
 
             return userData;
+        },
+
+        users: async () => {
+            return User.find()
+            .select('-__v -password');
+        },
+
+        userByUsername: async (parent, { username }) => {
+            return User.findOne({ username })
+            .select('-__v -password');
+        },
+        
+        projsByUser: async (parent, { _id }) => {
+            const projects = await User.findOne({ _id })
+            .select('projects')
+            .populate('projects');
+
+            return projects;
+        },
+
+        projects: async () => {
+            return Project.find()
+            .select('-__v');
+        },
+
+        project: async (parent, { _id }) => {
+            return Project.findOne({ _id })
+            .select('-__v');
+        },
+
+        userTasks: async (parent, { username }) => {
+            return User.findOne({ username })
+            .select('-password')
+            .select('tasks')
+            .populate('tasks');
+        },
+
+        projTasks: async (parent, { _id }) => {
+            const taskData = await Project.findOne({ _id })
+            .select('-__v')
+            .populate('tasks')
+
+            return taskData;
         }
-    },
-
-    users: async () => {
-        return Users.find()
-        .select('-__v -password');
-
-    },
-
-    user: async (parent, { username }) => {
-        return User.findOne({ username })
-        .select('-__v -password');
     }
-
 }
 
 

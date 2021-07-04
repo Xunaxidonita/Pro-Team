@@ -21,7 +21,10 @@ const projectSchema = new Schema(
       type: String,
       required: true
     },
-    tasks: [taskSchema]
+    tasks: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Task'
+    }]
   },
   {
     toJSON: {

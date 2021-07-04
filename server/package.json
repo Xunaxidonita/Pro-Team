@@ -4,8 +4,8 @@
   "description": "",
   "main": "server/server.js",
   "scripts": {
-    "watch": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "watch": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "dependencies": {
     "apollo-boost": "^0.4.9",
     "apollo-server-express": "^2.25.2",
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.5",
