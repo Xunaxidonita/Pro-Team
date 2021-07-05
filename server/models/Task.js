@@ -19,9 +19,7 @@ const taskSchema = new Schema(
     },
     dueDate: {
         type: Date,      
-        get: timestamp => dateFormat(timestamp)
-
-        
+        get: timestamp => dateFormat(timestamp) 
     }
   },
   {
@@ -30,11 +28,7 @@ const taskSchema = new Schema(
     },
   }
 );
-
-taskSchema.virtual('taskCount').get(function() {
-    return this.tasks.length;
-  });
   
-  const Task = model('Task', taskSchema);
+const Task = model('Task', taskSchema);
 
 module.exports = Task;

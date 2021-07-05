@@ -3,28 +3,36 @@ const { User, Task, Project } = require('../models');
 
 const resolvers = {
     Query: {
-        me: async (parent, args) => {
-            const userData = await User.findOne({})
-            .select('-__v -password');
+        me: async (parent, { _id }) => {
+            const userData = await User.findOne({ _id })
+            .select('-__v -password')
+            .populate('projects')
+            .populate('tasks');
 
             return userData;
         },
 
         users: async () => {
             return User.find()
-            .select('-__v -password');
+            .select('-__v -password')
+            .populate('projects')
+            .populate('tasks');
         },
 
         userByUsername: async (parent, { username }) => {
             return User.findOne({ username })
-            .select('-__v -password');
+            .select('-__v -password')
+            .populate('projects')
+            .populate('tasks');
         },
         
         projsByUser: async (parent, { _id }) => {
-            const projects = await User.findOne({ _id })
+            const projectData = await User.findOne({ _id })
             .select('projects')
-            .populate('projects');
+            .populate('projects')
+            .populate('tasks');
 
+            const projects = [...User.projects]
             return projects;
         },
 
@@ -51,6 +59,24 @@ const resolvers = {
             .populate('tasks')
 
             return taskData;
+        }
+    },
+    Mutation: {
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
+
+            return user;
+        },
+        addProject: async (parent, args) => {
+            const project = await Project.create(args);
+
+            return project;
+        },
+
+        addTask: async (parent, args) => {
+            const task = await Task.create(args);
+
+            return task;
         }
     }
 }

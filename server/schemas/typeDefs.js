@@ -39,6 +39,12 @@ type Query {
     userTasks(username: String): [Task]
     projTasks(projectId: ID): [Task]
 }
+
+type Mutation {
+    addUser(username: String!, email: String!, password: String!): User
+    addProject(projectName: String!, assignedTo: ID, taskCount: Int, taskIds: ID, dueDate: String): Project
+    addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
+}
 `;
 // Should make username unique, otherwise need get user by id instead
 // of get user by username

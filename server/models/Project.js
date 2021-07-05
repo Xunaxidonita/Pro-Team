@@ -33,8 +33,8 @@ const projectSchema = new Schema(
   }
 );
 
-projectSchema.virtual('projectCount').get(function() {
-  return this.projects.length;
+projectSchema.virtual('taskCount').get(function() {
+  return this.tasks.length;
 });
 
 const Project = model('Project', projectSchema);
