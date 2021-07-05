@@ -1,9 +1,13 @@
-import React from 'react'
-import Nav from '../Nav/index.js'
+import React from "react";
+import Nav from "../Nav/index.js";
+import ProjectSwitcher from "../ProjectSwitcher/index";
+const ProjectsPage = () => (
+  <>
+    <Nav></Nav>
 
-const Main = () => (
-    <Nav>
-    </Nav>
-)
+    <ProjectSwitcher></ProjectSwitcher>
+    {/* <div>WElCOME ${username}</div> */}
+  </>
+);
 
-export default Main;
+export default ProjectsPage;
