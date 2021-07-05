@@ -46,11 +46,10 @@ type Mutation {
     addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
 }
 `;
-// Should make username unique, otherwise need get user by id instead
-// of get user by username
-// Not sure what to do with conversations
+/*
+We will need to go over the Queries and Mutations as a group to decide what they need to look like, however the current ones are implemented and work
 
-
-// export typeDefs
+It might be easier to create a task or project and then add/remove assignees to it rather than ony while creating it. And we'll probaly need to pass through either the ID or the username of the assignee
+*/
 module.exports = typeDefs;
 
