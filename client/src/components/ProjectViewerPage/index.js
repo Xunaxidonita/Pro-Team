@@ -1,21 +1,19 @@
 import React from "react";
 import Nav from "../Nav/index.js";
 import ProjectSwitcher from "../ProjectSwitcher/index";
+import TaskSwimlanesAll from "../TaskSwimlanes/index.js";
 
 import { Header, Icon, Container } from "semantic-ui-react";
 
-const ProjectsPage = () => (
+const ProjectViewer = () => (
   <>
     <Nav></Nav>
 
     <ProjectSwitcher>
-      <Header icon>
-        <Icon name="tasks" />
-        Welcome USERNAME
-      </Header>
+      <ProjectViewer></ProjectViewer>
     </ProjectSwitcher>
     {/* <div>WElCOME ${username}</div> */}
   </>
 );
 
-export default ProjectsPage;
+export default ProjectViewer;
