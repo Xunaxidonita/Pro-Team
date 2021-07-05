@@ -3,6 +3,7 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import ProjectsPage from "./components/ProjectsPage";
 import NewProjectPage from "./components/NewProjectPage";
+import ProjectViewerPage from "./components/ProjectViewerPage";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -13,10 +14,13 @@ function App() {
         <Route exact path="/">
           <LoginPage></LoginPage>
         </Route>
-        <Route path="/projects">
+        <Route exact path="/projects">
           <ProjectsPage />
         </Route>
-        <Route path="/projects/new">
+        <Route exact path="/projects/1">
+          <ProjectViewerPage />
+        </Route>
+        <Route exact path="/projects/new">
           <NewProjectPage />
         </Route>
       </Switch>
