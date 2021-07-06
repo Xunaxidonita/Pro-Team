@@ -4,6 +4,8 @@ import LoginPage from "./components/LoginPage";
 import ProjectsPage from "./components/ProjectsPage";
 import NewProjectPage from "./components/NewProjectPage";
 import ProjectViewerPage from "./components/ProjectViewerPage";
+import SignUpPage from "./components/SignUpPage";
+import NewTaskPage from "./components/NewTaskPage";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -14,14 +16,20 @@ function App() {
         <Route exact path="/">
           <LoginPage></LoginPage>
         </Route>
+        <Route exact path="/Signup">
+          <SignUpPage></SignUpPage>
+        </Route>
         <Route exact path="/projects">
           <ProjectsPage />
         </Route>
-        <Route exact path="/projects/1">
+        <Route exact path="/projects/:id">
           <ProjectViewerPage />
         </Route>
         <Route exact path="/projects/new">
           <NewProjectPage />
+          <Route exact path="/projects/:id/tasks/new">
+            <NewTaskPage />
+          </Route>
         </Route>
       </Switch>
     </Router>
