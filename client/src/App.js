@@ -9,7 +9,10 @@ import "./App.css";
 import LoginPage from "./components/LoginPage";
 import ProjectsPage from "./components/ProjectsPage";
 import NewProjectPage from "./components/NewProjectPage";
-import SignUpForm from "./components/SignupForm";
+import ProjectViewerPage from "./components/ProjectViewerPage";
+import SignUpPage from "./components/SignUpPage";
+import NewTaskPage from "./components/NewTaskPage";
+
 import "semantic-ui-css/semantic.min.css";
 
 const httpLink = createHttpLink({
