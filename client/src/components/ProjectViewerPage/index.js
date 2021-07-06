@@ -1,11 +1,9 @@
 import React from "react";
 import Nav from "../Nav/index.js";
 import ProjectSwitcher from "../ProjectSwitcher/index";
-import TaskSwimlanesAll from "../TaskSwimlanes/index.js";
+import ProjectViewer from "../ProjectViewer/index";
 
-import { Header, Icon, Container } from "semantic-ui-react";
-
-const ProjectViewer = () => (
+const ProjectViewerPage = () => (
   <>
     <Nav></Nav>
 
@@ -16,4 +14,4 @@ const ProjectViewer = () => (
   </>
 );
 
-export default ProjectViewer;
+export default ProjectViewerPage;

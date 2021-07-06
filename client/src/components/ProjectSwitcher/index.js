@@ -1,10 +1,7 @@
 import React from "react";
-import { Container, Checkbox, Menu, Segment, Sidebar } from "semantic-ui-react";
+import { Container, Menu, Segment, Sidebar } from "semantic-ui-react";
 
 const ProjectSwitcher = ({ children }) => {
-  const segmentRef = React.useRef();
-  // const [visible, setVisible] = React.useState(false);
-
   return (
     <Sidebar.Pushable as={Segment.Group} raised>
       <Sidebar
