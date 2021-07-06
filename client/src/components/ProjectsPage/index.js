@@ -1,9 +1,21 @@
-import React from 'react'
-import Nav from '../Nav/index.js'
+import React from "react";
+import Nav from "../Nav/index.js";
+import ProjectSwitcher from "../ProjectSwitcher/index";
 
-const Main = () => (
-    <Nav>
-    </Nav>
-)
+import { Header, Icon } from "semantic-ui-react";
 
-export default Main;
+const ProjectsPage = () => (
+  <>
+    <Nav></Nav>
+
+    <ProjectSwitcher>
+      <Header icon>
+        <Icon name="tasks" />
+        Welcome USERNAME
+      </Header>
+    </ProjectSwitcher>
+    {/* <div>WElCOME ${username}</div> */}
+  </>
+);
+
+export default ProjectsPage;
