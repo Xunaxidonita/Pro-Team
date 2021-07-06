@@ -16,7 +16,7 @@ function App() {
         <Route exact path="/">
           <LoginPage></LoginPage>
         </Route>
-        <Route exact path="/Signup">
+        <Route exact path="/signup">
           <SignUpPage></SignUpPage>
         </Route>
         <Route exact path="/projects">
@@ -27,9 +27,9 @@ function App() {
         </Route>
         <Route exact path="/projects/new">
           <NewProjectPage />
-          <Route exact path="/projects/:id/tasks/new">
-            <NewTaskPage />
-          </Route>
+        </Route>
+        <Route exact path="/projects/:id/tasks/new">
+          <NewTaskPage />
         </Route>
       </Switch>
     </Router>
