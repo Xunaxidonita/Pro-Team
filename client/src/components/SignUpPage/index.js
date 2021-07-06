@@ -1,5 +1,11 @@
 import React from "react";
-import SignupForm from "../LoginForm";
-const SignUpPage = () => <SignupForm></SignupForm>;
+import SignupForm from "../SignupForm";
+import { Container } from "semantic-ui-react";
+
+const SignUpPage = () => (
+  <Container>
+    <SignupForm></SignupForm>
+  </Container>
+);
 
 export default SignUpPage;

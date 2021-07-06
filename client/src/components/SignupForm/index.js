@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form } from "semantic-ui-react";
+import { Button, Form, Input } from "semantic-ui-react";
 
 // still need sub-headings that tell user how many character to use for username and pw
 
@@ -60,12 +60,12 @@ class SignUpForm extends Component {
           value={password}
           onChange={this.handleChange}
         />
-         <Form.Field
-      id="form-button-control-public"
-      control={Button}
-      content="Submit"
-      label="Label with htmlFor"
-    />
+        <Form.Field
+          id="form-button-control-public"
+          control={Button}
+          content="Submit"
+          // label="Label with htmlFor"
+        />
       </Form>
     );
   }
