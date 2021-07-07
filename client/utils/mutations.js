@@ -1,3 +1,11 @@
+// add user - have
+// add project - have
+// add task - have
+// update project
+// update task
+// delete user
+// delete project
+// delete task
 
 import { gql } from '@apollo/client';
 
