@@ -1,3 +1,13 @@
+// add user - have
+// add project - have
+// add task - have
+// update project
+// update task
+// delete user
+// delete project
+// delete task
+
+
 import { gql } from '@apollo/client';
 
 export const QUERY_PRODUCTS = gql`
@@ -43,18 +53,18 @@ export const QUERY_CATEGORIES = gql`
 export const QUERY_USER = gql`
   {
     user {
-      firstName
-      lastName
-      orders {
+      username
+      email
+      projects {
         _id
-        purchaseDate
-        products {
+        projectName
+        assignedTo
+        dueDate
+        tasks {
           _id
-          name
-          description
-          price
-          quantity
-          image
+          taskName
+          assignedTo
+          dueDate
         }
       }
     }
