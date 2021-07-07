@@ -3,7 +3,7 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_PROJECTS = gql`
-  query projects($username:String) {
+  query projects($username: String) {
     projects(username: $username) {
       _id
       projectName
@@ -35,10 +35,21 @@ export const PROJECT = gql`
 `;
 
 export const USER_TASKS = gql`
-  query tasks($username:String) {
+  query tasks($username: String) {
     tasks(projectName: $projectName) {
       taskName
       taskText
+      dueDate
+    }
+  }
+`;
+
+export const PROJECT_TASKS = gql`
+  query projTasks($projectId: ID) {
+    tasks(_id: $id) {
+      taskName
+      taskText
+      assignedTo
       dueDate
     }
   }
