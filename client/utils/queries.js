@@ -50,9 +50,9 @@ export const QUERY_CATEGORIES = gql`
   }
 `;
 
-export const QUERY_USER = gql`
+export const QUERY_ME = gql`
   {
-    user {
+    me {
       username
       email
       projects {
