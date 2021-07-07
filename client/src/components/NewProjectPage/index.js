@@ -1,17 +1,17 @@
-import React from 'react'
-import ProjectForm from '../ProjectForm'
-import Nav from '../Nav'
-import { Segment } from 'semantic-ui-react'
+import React from "react";
+import ProjectForm from "../ProjectForm";
+import Nav from "../Nav";
+import { Segment } from "semantic-ui-react";
 
 const NewProject = () => (
-    <>
+  <>
     <Nav></Nav>
-    <Segment raised>
-        <Segment.Inline>
+    <Segment raised style={{ margin: "30px" }}>
+      <Segment.Inline>
         <ProjectForm></ProjectForm>
-        </Segment.Inline>
+      </Segment.Inline>
     </Segment>
-    </>
-)
+  </>
+);
 
 export default NewProject;

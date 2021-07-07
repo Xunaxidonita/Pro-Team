@@ -9,7 +9,7 @@ const ProjectsPage = () => (
     <Nav></Nav>
 
     <ProjectSwitcher>
-      <Header icon style={{ marginTop: "30px" }}>
+      <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
         <Icon name="tasks" />
         Welcome USERNAME
       </Header>

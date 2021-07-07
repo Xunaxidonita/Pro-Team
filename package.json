@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/Xunaxidonita/Pro-Team#readme",
   "dependencies": {
-    "concurrently": "^6.2.0"
+    "concurrently": "^6.2.0",
+    "moment": "^2.29.1",
+    "react-native-add-calendar-event": "^4.0.0"
   }
 }
