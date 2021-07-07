@@ -2,15 +2,14 @@
 
 import { gql } from "@apollo/client";
 
-export const QUERY_PROJECTS = gql`
-  query projsByUser(projectId: ID) {
+export const QUERY_PROJECTS_BY_USER = gql`
+  query projsByUser($username:String) {
     projects(username: $username) {
       _id
       projectName
       assignedTo
       dueDate
       username
-      image
       tasks {
         taskName
         dueDate
@@ -19,16 +18,17 @@ export const QUERY_PROJECTS = gql`
   }
 `;
 
-export const QUERY_ALL_PRODUCTS = gql`
-  {
-    products {
+export const PROJECT_BY_PROJECT_ID = gql`
+  query project($id: ID!) {
+    projects(_id: $id) {
       _id
-      name
-      description
-      price
-      quantity
-      category {
-        name
+      projectName
+      assignedTo
+      dueDate
+      username
+      tasks {
+        taskName
+        dueDate
       }
     }
   }
