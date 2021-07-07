@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Menu, Segment, Sidebar } from "semantic-ui-react";
 
-const ProjectSwitcher = ({ children }) => {
+const ProjectSwitcher = ({ projects, loading, children }) => {
   return (
     <Sidebar.Pushable as={Segment.Group} raised>
       <Sidebar
@@ -16,8 +16,9 @@ const ProjectSwitcher = ({ children }) => {
         <Menu.Item as="a">Create New Project</Menu.Item>
         {/* need to take user to create new project page */}
 
-        <Menu.Item as="a">PROJECT 1</Menu.Item>
-        {/* need to populate with list of projects */}
+        {projects.map((project) => {
+          <Menu.Item as="a">{project.title}</Menu.Item>;
+        })}
       </Sidebar>
 
       <Sidebar.Pusher>

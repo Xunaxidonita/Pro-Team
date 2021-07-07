@@ -4,18 +4,25 @@ import ProjectSwitcher from "../ProjectSwitcher/index";
 
 import { Header, Icon } from "semantic-ui-react";
 
-const ProjectsPage = () => (
-  <>
-    <Nav></Nav>
+import { GET_PROJECTS } from "../../utils/queries";
 
-    <ProjectSwitcher>
-      <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
-        <Icon name="tasks" />
-        Welcome USERNAME
-      </Header>
-    </ProjectSwitcher>
-    {/* <div>WElCOME ${username}</div> */}
-  </>
-);
+const ProjectsPage = () => {
+  const { loading, error, projects } = useQuery(GET_PROJECTS);
+  const { loading: loadinUser, user } = useQuery(GET_USER);
+
+  return (
+    <>
+      <Nav></Nav>
+
+      <ProjectSwitcher projects={projects} loading={loading}>
+        <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
+          <Icon name="tasks" />
+          Welcome {user.name}
+        </Header>
+      </ProjectSwitcher>
+      {/* <div>WElCOME ${username}</div> */}
+    </>
+  );
+};
 
 export default ProjectsPage;
