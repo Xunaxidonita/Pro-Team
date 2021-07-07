@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/Xunaxidonita/Pro-Team#readme",
   "dependencies": {
+    "@apollo/client": "^3.3.21",
     "concurrently": "^6.2.0",
+    "graphql": "^15.5.1",
     "moment": "^2.29.1",
     "react-native-add-calendar-event": "^4.0.0"
   }
