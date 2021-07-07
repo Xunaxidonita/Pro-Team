@@ -7,8 +7,7 @@
 // delete project
 // delete task
 
-
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {
@@ -55,6 +54,8 @@ export const QUERY_ME = gql`
     me {
       username
       email
+      projectCount
+      taskCount
       projects {
         _id
         projectName
@@ -71,10 +72,26 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_CHECKOUT = gql `
-query getCheckout($products: [ID]!) {
-  checkout(products: $products) {
-    session
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      projectCount
+      taskCount
+      projects {
+        _id
+        projectName
+        assignedTo
+        dueDate
+        tasks {
+          _id
+          taskName
+          assignedTo
+          dueDate
+        }
+      }
+    }
   }
-}
 `;
