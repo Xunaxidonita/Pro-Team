@@ -48,6 +48,7 @@ type Mutation {
 }
 `;
 /* Do we need a get all users query? I can't think of a situation in which we would need one */
+/* Do we need projsByUser when we already have projects? */
 /*
 We will need to go over the Queries and Mutations as a group to decide what they need to look like, however the current ones are implemented and work
 
