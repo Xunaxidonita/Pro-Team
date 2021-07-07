@@ -4,7 +4,7 @@ import {
   Form,
   Grid,
   Header,
-  Image,
+  Icon,
   Message,
   Segment,
 } from "semantic-ui-react";
@@ -14,7 +14,7 @@ const LoginForm = () => (
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as="h2" class="button" textAlign="center">
         {/* need to change color */}
-        <Image src="../logo.svg" /> Log in to your account
+        <Icon name="cogs" /> Log in to your account
         {/* need new logo here */}
       </Header>
       <Form size="large">
