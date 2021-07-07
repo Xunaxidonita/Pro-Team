@@ -39,12 +39,17 @@ type Query {
     userTasks(username: String): [Task]
     projTasks(projectId: ID): [Task]
 }
+
+type Mutation {
+    addUser(username: String!, email: String!, password: String!): User
+    addProject(projectName: String!, assignedTo: ID, taskCount: Int, taskIds: ID, dueDate: String): Project
+    addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
+}
 `;
-// Should make username unique, otherwise need get user by id instead
-// of get user by username
-// Not sure what to do with conversations
+/*
+We will need to go over the Queries and Mutations as a group to decide what they need to look like, however the current ones are implemented and work
 
-
-// export typeDefs
+It might be easier to create a task or project and then add/remove assignees to it rather than ony while creating it. And we'll probaly need to pass through either the ID or the username of the assignee
+*/
 module.exports = typeDefs;
 
