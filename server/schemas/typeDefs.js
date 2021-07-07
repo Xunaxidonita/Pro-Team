@@ -31,7 +31,7 @@ type User {
 
 type Query {
     me: User
-    users: [User]
+    users: [User] 
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]
     projects(username: String): [Project]
@@ -47,6 +47,7 @@ type Mutation {
     addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
 }
 `;
+/* Do we need a get all users query? I can't think of a situation in which we would need one */
 /*
 We will need to go over the Queries and Mutations as a group to decide what they need to look like, however the current ones are implemented and work
 

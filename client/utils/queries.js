@@ -1,25 +1,19 @@
-// add user - have
-// add project - have
-// add task - have
-// update project
-// update task
-// delete user
-// delete project
-// delete task
+/* Do we need a get all users query? I can't think of a situation in which we would need one */
 
 import { gql } from "@apollo/client";
 
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
+export const QUERY_PROJECTS = gql`
+  query projsByUser(projectId: ID) {
+    projects(username: $username) {
       _id
-      name
-      description
-      price
-      quantity
+      projectName
+      assignedTo
+      dueDate
+      username
       image
-      category {
-        _id
+      tasks {
+        taskName
+        dueDate
       }
     }
   }
