@@ -25,11 +25,11 @@ function App() {
         <Route exact path="/projects/new">
           <NewProjectPage />
         </Route>
-        <Route path="/projects/:id">
-          <ProjectViewerPage />
-        </Route>
         <Route path="/projects/:id/tasks/new">
           <NewTaskPage />
+        </Route>
+        <Route path="/projects/:id">
+          <ProjectViewerPage />
         </Route>
       </Switch>
     </Router>
