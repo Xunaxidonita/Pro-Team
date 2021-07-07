@@ -10,6 +10,8 @@ class SignUpForm extends Component {
 
   handleSubmit = () => this.setState({ email: "", name: "", password: "" });
 
+
+
   render() {
     const { name, email, password } = this.state;
 
@@ -19,7 +21,7 @@ class SignUpForm extends Component {
         <Form.Field
           required
           id="form-input-control-username"
-          control={Input}
+          // control={Input}
           label="Username"
           placeholder="Username"
           error={{
@@ -33,7 +35,7 @@ class SignUpForm extends Component {
         <Form.Field
           required
           id="form-input-control-email"
-          control={Input}
+          // control={Input}
           label="Email Address"
           placeholder="Email Address"
           error={{
@@ -47,7 +49,7 @@ class SignUpForm extends Component {
         <Form.Field
           required
           id="form-input-control-password"
-          control={Input}
+          // control={Input}
           label="Password"
           placeholder="Password"
           error={{
