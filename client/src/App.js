@@ -12,6 +12,7 @@ import NewProjectPage from "./components/NewProjectPage";
 import ProjectViewerPage from "./components/ProjectViewerPage";
 import SignUpPage from "./components/SignUpPage";
 import NewTaskPage from "./components/NewTaskPage";
+import SignUpForm from "./components/SignupForm";
 
 import "semantic-ui-css/semantic.min.css";
 

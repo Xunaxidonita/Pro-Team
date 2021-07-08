@@ -42,11 +42,7 @@ const LoginForm = () => {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" class="button" textAlign="center">
-          {/* need to change color */}
-          <Image src="../logo.svg" /> Log in to your account
-          {/* need new logo here */}
-        </Header>
+        <Header as="h2" class="button" textAlign="center"></Header>
         <Form size="large" onSubmit={handleFormSubmit}>
           <Segment stacked>
             <Form.Input

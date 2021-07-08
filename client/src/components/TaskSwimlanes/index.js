@@ -1,9 +1,6 @@
 import React from "react";
 import { Table } from "semantic-ui-react";
-<<<<<<< HEAD
 import TaskCard from "../TaskCard";
-=======
->>>>>>> 0a8ef270... render viewer
 
 const TaskSwimlanesAll = () => {
   const unassignedTasks = [{}, {}];

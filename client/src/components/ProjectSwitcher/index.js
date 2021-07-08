@@ -16,7 +16,7 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
         <Menu.Item as="a">Create New Project</Menu.Item>
         {/* need to take user to create new project page */}
 
-        {projects.map((project) => {
+        {projects?.map((project) => {
           <Menu.Item as="a">{project.title}</Menu.Item>;
         })}
       </Sidebar>

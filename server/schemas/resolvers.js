@@ -65,7 +65,8 @@ const resolvers = {
         addUser: async (parent, args) => {
             const user = await User.create(args);
 
-            return user;
+            // TODO: create a real token
+            return { token: '123', user };
         },
         addProject: async (parent, args) => {
             const project = await Project.create(args);
