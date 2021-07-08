@@ -24,15 +24,14 @@ const LoginForm = () => {
       });
 
       if (response) {
-        window.location.replace("/projects");
+        // window.location.replace("/projects");
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (event, { name, value }) => {
     setFormState({
       ...formState,
       [name]: value,
@@ -48,6 +47,7 @@ const LoginForm = () => {
             <Form.Input
               fluid
               icon="user"
+              name="email"
               iconPosition="left"
               placeholder="E-mail address"
               onChange={handleChange}
@@ -55,6 +55,7 @@ const LoginForm = () => {
             <Form.Input
               fluid
               icon="lock"
+              name="password"
               iconPosition="left"
               placeholder="Password"
               type="password"

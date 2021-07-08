@@ -1,8 +1,9 @@
 const { User, Task, Project } = require("../models");
+const Session = require("../models/Session");
 
 const resolvers = {
   Query: {
-    me: async ({ token }) => {
+    me: async (parent, { token }) => {
       const session = await Session.findOne({ _id: token });
 
       return session.user;
@@ -58,9 +59,11 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
+      const token = "123"; // TODO: generate token
 
-      // TODO: create a real token
-      return { token: "123", user };
+      const session = await Session.create({ _id: token, user });
+
+      return session;
     },
     addProject: async (parent, args) => {
       const project = await Project.create(args);
@@ -72,6 +75,18 @@ const resolvers = {
       const task = await Task.create(args);
 
       return task;
+    },
+
+    login: async (parent, { email, password }) => {
+      const token = "123"; // TODO: generate token
+      const user = await User.findOne({ email });
+
+      if (await user.isCorrectPassword(password)) {
+        const session = await Session.create({ token, user });
+        return await Session.findOne({ _id: session._id }).populate("user");
+      }
+
+      throw "Incorrect password";
     },
   },
 };

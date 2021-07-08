@@ -34,6 +34,9 @@ function App() {
           <Route path="/projects/new">
             <NewProjectPage />
           </Route>
+          <Route exact path="/projects">
+            <ProjectsPage />
+          </Route>
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignUpForm} />
         </Switch>

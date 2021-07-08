@@ -2,18 +2,16 @@ const { Schema, model } = require("mongoose");
 
 const sessionSchema = new Schema(
   {
-    _id: {
+    token: {
       type: String,
-      required: "Please give your project a name!",
+      required: "Please give your session a token!",
       minlength: 1,
       maxlength: 280,
     },
-    user: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     toJSON: {
