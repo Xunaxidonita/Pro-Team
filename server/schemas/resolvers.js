@@ -1,87 +1,80 @@
-const { User, Task, Project } = require('../models');
-
+const { User, Task, Project } = require("../models");
 
 const resolvers = {
-    Query: {
-        me: async (parent, { _id }) => {
-            const userData = await User.findOne({ _id })
-            .select('-__v -password')
-            .populate('projects')
-            .populate('tasks');
+  Query: {
+    me: async ({ token }) => {
+      const session = await Session.findOne({ _id: token });
 
-            return userData;
-        },
-
-        users: async () => {
-            return User.find()
-            .select('-__v -password')
-            .populate('projects')
-            .populate('tasks');
-        },
-
-        userByUsername: async (parent, { username }) => {
-            return User.findOne({ username })
-            .select('-__v -password')
-            .populate('projects')
-            .populate('tasks');
-        },
-        
-        projsByUser: async (parent, { _id }) => {
-            const projectData = await User.findOne({ _id })
-            .select('projects')
-            .populate('projects')
-            .populate('tasks');
-
-            const projects = [...User.projects]
-            return projects;
-        },
-
-        projects: async () => {
-            return Project.find()
-            .select('-__v');
-        },
-
-        project: async (parent, { _id }) => {
-            return Project.findOne({ _id })
-            .select('-__v');
-        },
-
-        userTasks: async (parent, { username }) => {
-            return User.findOne({ username })
-            .select('-password')
-            .select('tasks')
-            .populate('tasks');
-        },
-
-        projTasks: async (parent, { _id }) => {
-            const taskData = await Project.findOne({ _id })
-            .select('-__v')
-            .populate('tasks')
-
-            return taskData;
-        }
+      return session.user;
     },
-    Mutation: {
-        addUser: async (parent, args) => {
-            const user = await User.create(args);
 
-            // TODO: create a real token
-            return { token: '123', user };
-        },
-        addProject: async (parent, args) => {
-            const project = await Project.create(args);
+    users: async () => {
+      return User.find()
+        .select("-__v -password")
+        .populate("projects")
+        .populate("tasks");
+    },
 
-            return project;
-        },
+    userByUsername: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select("-__v -password")
+        .populate("projects")
+        .populate("tasks");
+    },
 
-        addTask: async (parent, args) => {
-            const task = await Task.create(args);
+    projsByUser: async (parent, { _id }) => {
+      const projectData = await User.findOne({ _id })
+        .select("projects")
+        .populate("projects")
+        .populate("tasks");
 
-            return task;
-        }
-    }
-}
+      const projects = [...User.projects];
+      return projects;
+    },
 
+    projects: async () => {
+      return Project.find().select("-__v");
+    },
+
+    project: async (parent, { _id }) => {
+      return Project.findOne({ _id }).select("-__v");
+    },
+
+    userTasks: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select("-password")
+        .select("tasks")
+        .populate("tasks");
+    },
+
+    projTasks: async (parent, { _id }) => {
+      const taskData = await Project.findOne({ _id })
+        .select("-__v")
+        .populate("tasks");
+
+      return taskData;
+    },
+  },
+  Mutation: {
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+
+      // TODO: create a real token
+      return { token: "123", user };
+    },
+    addProject: async (parent, args) => {
+      const project = await Project.create(args);
+
+      return project;
+    },
+
+    addTask: async (parent, args) => {
+      const task = await Task.create(args);
+
+      return task;
+    },
+  },
+};
 
 // GET (Queries):
 
@@ -90,7 +83,7 @@ const resolvers = {
 // get single user by username (or by id)* - check
 // get all users for project - check
 // get all projects for a user - check
-// get project by project id (should use id instead of name 
+// get project by project id (should use id instead of name
 // in case multiple projects have same name) -check
 // get all tasks for a user --check
 // get all tasks for a project --
