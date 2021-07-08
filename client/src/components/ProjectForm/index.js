@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Select } from "semantic-ui-react";
+import { Button, Form, Dropdown } from "semantic-ui-react";
 
 const ProjectForm = () => {
   const members = [
@@ -22,7 +22,13 @@ const ProjectForm = () => {
         <input placeholder="Description" />
       </Form.Field>
       <h3>Members:</h3>
-      <Select placeholder="Select a programer" options={members}></Select>
+      <Dropdown
+        placeholder="Dropdown a programer"
+        fluid
+        multiple
+        selection
+        options={members}
+      ></Dropdown>
       <h3>Due Date:</h3>
       {/* need maybe a calendar here where user can select date */}
 
