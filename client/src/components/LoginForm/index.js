@@ -11,6 +11,7 @@ import {
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import { Link } from "react-router-dom";
+import AuthService from "../../utils/auth";
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -24,7 +25,8 @@ const LoginForm = () => {
       });
 
       if (response) {
-        // window.location.replace("/projects");
+        AuthService.login(response.data.login.token);
+        window.location.replace("/projects");
       }
     } catch (e) {
       console.log(e);

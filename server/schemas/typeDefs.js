@@ -35,7 +35,7 @@ type Session {
 }
 
 type Query {
-    me: User
+    me(token: String): User
     users: [User] 
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]

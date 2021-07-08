@@ -56,8 +56,8 @@ export const PROJECT_TASKS = gql`
 `;
 
 export const QUERY_ME = gql`
-  {
-    me {
+  query me($token: String) {
+    me(token: $token) {
       username
       email
       projectCount
@@ -65,14 +65,7 @@ export const QUERY_ME = gql`
       projects {
         _id
         projectName
-        assignedTo
         dueDate
-        tasks {
-          _id
-          taskName
-          assignedTo
-          dueDate
-        }
       }
     }
   }

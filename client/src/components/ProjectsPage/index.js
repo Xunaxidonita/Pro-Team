@@ -6,23 +6,27 @@ import { useQuery } from "@apollo/client";
 import { Header, Icon } from "semantic-ui-react";
 
 import { QUERY_PROJECTS } from "../../utils/queries";
-import { QUERY_USER } from "../../utils/queries";
+import { QUERY_ME } from "../../utils/queries";
+import AuthService from "../../utils/auth";
 
 const ProjectsPage = () => {
-  const { loading, error, projects } = useQuery(QUERY_PROJECTS);
-  const { loading: loadingUser, user } = useQuery(QUERY_USER);
+  const { loading, data: userData } = useQuery(QUERY_ME, {
+    variables: { token: AuthService.getToken() },
+  });
+
+  const projects = userData?.me?.projects;
 
   return (
     <>
       <Nav></Nav>
 
       <ProjectSwitcher projects={projects} loading={loading}>
-        {loadingUser ? (
+        {loading ? (
           "Loading"
         ) : (
           <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
             <Icon name="tasks" />
-            Welcome {user.name}
+            Welcome {userData.me.username}
           </Header>
         )}
       </ProjectSwitcher>

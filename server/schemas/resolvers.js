@@ -4,7 +4,7 @@ const Session = require("../models/Session");
 const resolvers = {
   Query: {
     me: async (parent, { token }) => {
-      const session = await Session.findOne({ _id: token });
+      const session = await Session.findOne({ token }).populate("user");
 
       return session.user;
     },
@@ -80,6 +80,8 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const token = "123"; // TODO: generate token
       const user = await User.findOne({ email });
+
+      console.log(user);
 
       if (await user.isCorrectPassword(password)) {
         const session = await Session.create({ token, user });
