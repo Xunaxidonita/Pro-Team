@@ -17,4 +17,11 @@ const FILES_TO_CACHE = [
         return cache.addAll(FILES_TO_CACHE)
       })
     )
-  })
+  });
+
+  self.addEventListener('activate', function (e) {
+    e.waitUntil(
+      caches.keys().then(function (keyList) {
+        let cacheKeeplist = keyList.filter(function (key) {
+          return key.indexOf(APP_PREFIX);
+        })
