@@ -9,19 +9,32 @@ const FILES_TO_CACHE = [
    
   ];
 
-
-  self.addEventListener('install', function (e) {
-    e.waitUntil(
-      caches.open(CACHE_NAME).then(function (cache) {
-        console.log('installing cache : ' + CACHE_NAME)
-        return cache.addAll(FILES_TO_CACHE)
+// Install the service worker
+self.addEventListener('install', function(evt) {
+    evt.waitUntil(
+      caches.open(CACHE_NAME).then(cache => {
+        console.log('Your files were pre-cached successfully!');
+        return cache.addAll(FILES_TO_CACHE);
       })
-    )
+    );
+  
+    self.skipWaiting();
   });
 
-  self.addEventListener('activate', function (e) {
-    e.waitUntil(
-      caches.keys().then(function (keyList) {
-        let cacheKeeplist = keyList.filter(function (key) {
-          return key.indexOf(APP_PREFIX);
-        })
+  // Activate the service worker and remove old data from the cache
+  self.addEventListener('activate', function(evt) {
+    evt.waitUntil(
+      caches.keys().then(keyList => {
+        return Promise.all(
+          keyList.map(key => {
+            if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
+              console.log('Removing old cache data', key);
+              return caches.delete(key);
+            }
+          })
+        );
+      })
+    );
+  
+    self.clients.claim();
+  });
