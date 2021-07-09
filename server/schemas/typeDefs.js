@@ -33,8 +33,13 @@ type User {
     tasks: [Task]
 }
 
+type Session {
+    token: String
+    user: User
+}
+
 type Query {
-    me: User
+    me(token: String): User
     users: [User] 
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]
@@ -45,8 +50,8 @@ type Query {
 }
 
 type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): User
+    addUser(username: String!, email: String!, password: String!): Session
+    login(email: String!, password: String!): Session
     addProject(projectName: String!, assignedTo: ID, taskCount: Int, taskIds: ID, dueDate: String): Project
     addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
 }

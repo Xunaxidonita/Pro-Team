@@ -10,7 +10,11 @@ const NewTaskPage = () => {
   return (
     <>
       <Nav></Nav>
+<<<<<<< HEAD
       <Segment raised>
+=======
+      <Segment raised style={{ margin: "45px" }}>
+>>>>>>> origin/feature/components-do
         <Segment.Inline>
           <TaskForm></TaskForm>
         </Segment.Inline>
