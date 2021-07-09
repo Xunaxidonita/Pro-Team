@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import { gql } from '@apollo/client';
-=======
 // add user - have
 // add project - have
 // add task - have
@@ -11,7 +8,6 @@ import { gql } from '@apollo/client';
 // delete task
 
 import { gql } from "@apollo/client";
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -24,57 +20,22 @@ export const LOGIN = gql`
   }
 `;
 
-<<<<<<< HEAD
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
-=======
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
       token
       user {
         _id
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
       }
     }
   }
 `;
 
-<<<<<<< HEAD
-export const ADD_USER = gql`
-  mutation addUser(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-  ) {
-    addUser(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-    ) {
-      token
-      user {
-        _id
-      }
-=======
 export const ADD_PROJECT = gql`
   mutation addProject(
     $projectName: String!
     $description: String!
-    $members: [UserInput]
+    $members: [User]
     $dueDate: String
   ) {
     addProject(
@@ -84,7 +45,6 @@ export const ADD_PROJECT = gql`
       dueDate: $dueDate
     ) {
       _id
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
     }
   }
 `;
