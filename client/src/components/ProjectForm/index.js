@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Button, Form, Select } from "semantic-ui-react";
-
-const ProjectForm = () => {
-  const members = [
-    { key: "ja", value: "ja", text: "Johnny Appleseed" },
-    { key: "db", value: "db", text: "Daniel Boon" },
-  ];
-  const options = [
-    { key: "ag", value: "ag", text: "Assigned" },
-    { key: "ip", value: "ip", text: "In Progress" },
-    { key: "cm", value: "cm", text: "Completed" },
-  ];
-  return (
-    <Form>
-      <Form.Field>
-        <label>Project Title</label>
-        <input placeholder="Title" />
-      </Form.Field>
-      <Form.Field>
-        <label>Description</label>
-        <input placeholder="Description" />
-      </Form.Field>
-      <h3>Members:</h3>
-      <Select placeholder="Select a programer" options={members}></Select>
-      <h3>Due Date:</h3>
-      {/* need maybe a calendar here where user can select date */}
-=======
 import React, { useReducer, useState } from "react";
 import { Button, Form, Dropdown, Input } from "semantic-ui-react";
 import { ADD_PROJECT } from "../../utils/mutations";
@@ -64,6 +35,17 @@ const ProjectForm = () => {
   const handleSubmit = () => {
     createProject({ variables: state });
   };
+
+  // const members2 = [
+  //   { key: "ja", value: "ja", text: "Johnny Appleseed" },
+  //   { key: "db", value: "db", text: "Daniel Boon" },
+  // ];
+  // const options = [
+  //   { key: "ag", value: "ag", text: "Assigned" },
+  //   { key: "ip", value: "ip", text: "In Progress" },
+  //   { key: "cm", value: "cm", text: "Completed" },
+  // ];
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Field
@@ -94,8 +76,6 @@ const ProjectForm = () => {
       ></Dropdown>
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
-
       <Button type="submit">Submit</Button>
     </Form>
   );

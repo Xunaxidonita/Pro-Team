@@ -65,7 +65,7 @@ const resolvers = {
       const user = await User.create(args);
       const token = "123"; // TODO: generate token
 
-      const session = await Session.create({ _id: token, user });
+      const session = await Session.create({ token, user });
 
       return session;
     },

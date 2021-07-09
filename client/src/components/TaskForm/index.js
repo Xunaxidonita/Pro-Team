@@ -1,34 +1,60 @@
-import React from "react";
-import { Button, Select, Form } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Button, Select, Form, Input } from "semantic-ui-react";
+import Calendar from "rc-calendar";
+import { useMutation } from "@apollo/client";
+import { ADD_TASK } from "../../utils/mutations";
 
 const TaskForm = ({ project }) => {
-  const members = [
-    { key: "ja", value: "ja", text: "Johnny Appleseed" },
-    { key: "db", value: "db", text: "Daniel Boon" },
-  ];
+  const [state, setState] = useState({});
+  const [createTask, { data }] = useMutation(ADD_TASK);
+  const handleChange = (e, { name, value }) =>
+    setState({ ...state, [name]: value });
+
+  const handleSelect = (date) => {
+    setState({ ...state, dueDate: date.toISOString() });
+  };
+
+  const handleSubmit = () => {
+    createTask({ variables: state });
+  };
   const options = [
-    { key: "ag", value: "ag", text: "Assigned" },
+    { key: "un", value: "un", text: "Unassigned" },
+    { key: "as", value: "as", text: "Assigned" },
     { key: "ip", value: "ip", text: "In Progress" },
     { key: "cm", value: "cm", text: "Completed" },
   ];
+
+  if (!project) {
+    return false;
+  }
+
   return (
-    <Form>
-      <Form.Field>
-        <label>Title</label>
-        <input placeholder="Title" />
-      </Form.Field>
-      <Form.Field>
-        <label>Description</label>
-        <input placeholder="Description" />
-      </Form.Field>
-      <Form.Field>
+    <Form onSubmit={handleSubmit}>
+      <Form.Field
+        name="taskName"
+        onChange={handleChange}
+        label="Title"
+        control={Input}
+      ></Form.Field>
+      <Form.Field
+        name="taskText"
+        onChange={handleChange}
+        label="Description"
+        control={Input}
+      ></Form.Field>
+      <Form.Field name="assignedTo" onChange={handleChange}>
         <label>Assignee</label>
-        <Select placeholder="Select a programer" options={members}></Select>
+        <Select
+          placeholder="Select a programer"
+          options={project.members}
+        ></Select>
       </Form.Field>
-      <Form.Field>
+      <Form.Field name="status" onChange={handleChange}>
         <label>Status</label>
-        <Select placeholder="Unassigne" options={options}></Select>
+        <Select placeholder="Unassigned" options={options}></Select>
       </Form.Field>
+      <h3>Due Date:</h3>
+      <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
       <Button type="submit">Submit</Button>
     </Form>
   );

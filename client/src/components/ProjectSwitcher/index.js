@@ -1,9 +1,6 @@
 import React from "react";
 import { Container, Menu, Segment, Sidebar } from "semantic-ui-react";
-<<<<<<< HEAD
-=======
 import { Link } from "react-router-dom";
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
 
 const ProjectSwitcher = ({ projects, loading, children }) => {
   return (
@@ -17,22 +14,6 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
         visible
         width="thin"
       >
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <Menu.Item as="a">Create New Project</Menu.Item>
-        {/* need to take user to create new project page */}
-
-        {projects.map((project) => {
-=======
-        <Menu.Item as="a">
-          <Link to="/projects/new">Create New Project</Link>
-        </Menu.Item>
-
-        {projects?.map((project) => {
->>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
-          <Menu.Item as="a">{project.title}</Menu.Item>;
-        })}
-=======
         {[
           <Menu.Item as="a">
             <Link to="/projects/new">Create New Project</Link>
@@ -48,7 +29,6 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
             );
           })
         )}
->>>>>>> 3998ecfe94cb0c8a7969d06d113e397d0597a2dc
       </Sidebar>
 
       <Sidebar.Pusher>

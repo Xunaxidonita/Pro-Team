@@ -48,3 +48,27 @@ export const ADD_PROJECT = gql`
     }
   }
 `;
+export const ADD_TASK = gql`
+  mutation addTask(
+    $taskName: String!
+    $taskText: String!
+    $assignedTo: UserInput
+    $dueDate: String
+    $status: String
+  ) {
+    addTask(
+      taskName: $taskName
+      taskText: $taskText
+      assignedTo: $assignedTo
+      dueDate: $dueDate
+      status: $status
+    ) {
+      _id
+    }
+  }
+`;
+
+// export const ADD_PROJECT_TO_USER = gql`
+//   mutation addProjectToUser(
+//     $projectName: String
+//   )`;
