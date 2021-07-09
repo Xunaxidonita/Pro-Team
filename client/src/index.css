@@ -26,4 +26,6 @@ code {
   font-size: smaller;
   margin-top: 5px;
 }
-
+.logo-card {
+  float: right;
+}
