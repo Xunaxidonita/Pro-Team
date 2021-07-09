@@ -69,7 +69,7 @@ const LoginForm = () => {
             </Button>
           </Segment>
         </Form>
-        <Message>
+        <Message color='teal'>
           New to us? <Link to="/signup">Sign Up</Link>
         </Message>
       </Grid.Column>
