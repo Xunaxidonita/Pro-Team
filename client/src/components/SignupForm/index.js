@@ -52,6 +52,7 @@ const SignUpForm = () => {
         placeholder="Password"
         width={6}
         name="password"
+        type="password"
         value={state.password}
         onChange={handleChange}
       />
