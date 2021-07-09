@@ -21,7 +21,9 @@ const SignUpForm = () => {
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="sign-up-header">Sign Up for Pro-Team!</h2>
+      <h3 className="sign-up-subtitle">The latest project management solution.</h3>
       <h4 className="required-fields">All Fields are Required</h4>
+    
       <Form.Field
         required
         id="form-input-control-username"

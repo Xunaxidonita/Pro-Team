@@ -12,6 +12,8 @@ import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import { Link } from "react-router-dom";
 import AuthService from "../../utils/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Card from './components/LoginCard';
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -41,7 +43,9 @@ const LoginForm = () => {
   };
 
   return (
+    
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+      <Card />
       <Grid.Column style={{ maxWidth: 450 }}>
         <h2>Hello! Please log in to get started with Pro-Team.</h2>
         <Header as="h2" class="button" textAlign="center"></Header>
