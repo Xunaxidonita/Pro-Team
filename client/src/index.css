@@ -12,3 +12,13 @@ code {
     monospace;
 } */
 
+.sign-up-header {
+  padding-top: 20px;
+  color: #479c9c;
+}
+
+.required-fields {
+  padding-top: 5px;
+  color: 	#d0705a;
+}
+

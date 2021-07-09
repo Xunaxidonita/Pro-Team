@@ -64,7 +64,7 @@ const LoginForm = () => {
               onChange={handleChange}
             />
 
-            <Button class="button" fluid size="large" color='teal'>
+            <Button className="button" fluid size="large" color='teal'>
               Log in
             </Button>
           </Segment>

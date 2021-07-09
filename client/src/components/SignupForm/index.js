@@ -19,17 +19,15 @@ const SignUpForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h3>All Fields are Required</h3>
+      <h2 className='sign-up-header'>Sign Up for Pro-Team!</h2>
+      <h3 className='required-fields'>All Fields are Required</h3>
       <Form.Field
         required
         id="form-input-control-username"
         control={Input}
         label="Username"
         placeholder="Username"
-        error={{
-          content: "Please enter a valid username",
-          pointing: "below",
-        }}
+      
         name="username"
         value={state.name}
         onChange={handleChange}
@@ -40,10 +38,7 @@ const SignUpForm = () => {
         control={Input}
         label="Email Address"
         placeholder="Email Address"
-        error={{
-          content: "Please enter a valid email address",
-          pointing: "below",
-        }}
+       
         name="email"
         value={state.email}
         onChange={handleChange}
@@ -54,10 +49,7 @@ const SignUpForm = () => {
         control={Input}
         label="Password"
         placeholder="Password"
-        error={{
-          content: "Please enter a valid password",
-          pointing: "below",
-        }}
+      
         name="password"
         value={state.password}
         onChange={handleChange}
