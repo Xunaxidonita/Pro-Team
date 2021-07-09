@@ -59,6 +59,7 @@ const SignUpForm = () => {
           pointing: "below",
         }}
         name="password"
+        type="password"
         value={state.password}
         onChange={handleChange}
       />
