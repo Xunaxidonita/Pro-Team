@@ -4,7 +4,9 @@ const Session = require("../models/Session");
 const resolvers = {
   Query: {
     me: async (parent, { token }) => {
-      const session = await Session.findOne({ token }).populate("user");
+      const session = await Session.findOne({ token })
+        .populate("user")
+        .populate("user.projects");
 
       return session.user;
     },

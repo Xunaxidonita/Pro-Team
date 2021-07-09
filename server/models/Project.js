@@ -1,42 +1,49 @@
-const { Schema, model } = require('mongoose');
-
+const { Schema, model, Types } = require("mongoose");
 
 const projectSchema = new Schema(
   {
     projectName: {
       type: String,
-      required: 'Please give your project a name!',
+      required: "Please give your project a name!",
       minlength: 1,
-      maxlength: 280
+      maxlength: 280,
     },
-    assignedTo: {
+
+    description: {
       type: String,
-      minlength: 1
+      require: "Please provide a description for you project",
+      minlength: 5,
+      maxlength: 1024,
     },
     dueDate: {
-        type: Date,
-        get: timestamp => dateFormat(timestamp)
+      type: Date,
+      get: (timestamp) => dateFormat(timestamp),
     },
-    username: {
-      type: String,
-      required: true
-    },
-    tasks: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Task'
-    }]
+
+    members: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
+
+    tasks: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Task",
+      },
+    ],
   },
   {
     toJSON: {
-      getters: true
-    }
+      getters: true,
+    },
   }
 );
-
-projectSchema.virtual('taskCount').get(function() {
+projectSchema.virtual("taskCount").get(function () {
   return this.tasks.length;
 });
 
-const Project = model('Project', projectSchema);
+const Project = model("Project", projectSchema);
 
 module.exports = Project;

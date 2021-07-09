@@ -18,6 +18,15 @@ export const QUERY_PROJECTS = gql`
   }
 `;
 
+export const QUERY_USERS = gql`
+  query users {
+    users {
+      _id
+      username
+    }
+  }
+`;
+
 export const PROJECT = gql`
   query project($id: ID!) {
     projects(_id: $id) {

@@ -32,12 +32,19 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-      }
+  mutation addProject(
+    $projectName: String!
+    $description: String!
+    $members: [UserInput]
+    $dueDate: String
+  ) {
+    addProject(
+      projectName: $projectName
+      description: $description
+      members: $members
+      dueDate: $dueDate
+    ) {
+      _id
     }
   }
 `;
