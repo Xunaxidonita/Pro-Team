@@ -12,8 +12,9 @@ const SignUpForm = () => {
   const handleChange = (e, { name, value }) =>
     setState({ ...state, [name]: value });
 
-  const handleSubmit = () => {
-    signup({ variables: state });
+  const handleSubmit = async () => {
+    await signup({ variables: state });
+    window.location.replace("/projects");
   };
 
   return (

@@ -12,7 +12,6 @@ import NewProjectPage from "./components/NewProjectPage";
 import ProjectViewerPage from "./components/ProjectViewerPage";
 import SignUpPage from "./components/SignUpPage";
 import NewTaskPage from "./components/NewTaskPage";
-import SignUpForm from "./components/SignupForm";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -30,12 +29,17 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route exact path="/" component={ProjectsPage} />
+          <Route exact path="/" component={LoginPage} />
           <Route path="/projects/new" component={NewProjectPage} />
           <Route exact path="/projects" component={ProjectsPage} />
           <Route exact path="/projects/:id" component={ProjectViewerPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignUpPage} />
+          <Route
+            exact
+            path="/projects/:project_id/tasks/new"
+            component={NewTaskPage}
+          />
         </Switch>
       </Router>
     </ApolloProvider>

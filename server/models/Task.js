@@ -5,7 +5,7 @@ const taskSchema = new Schema(
   {
     taskName: {
       type: String,
-      required: 'Please give your task a name!',
+      required: "Please give your task a name!",
       maxlength: 140,
     },
     taskText: {
@@ -18,9 +18,13 @@ const taskSchema = new Schema(
       maxlength: 20,
     },
     dueDate: {
-        type: Date,      
-        get: timestamp => dateFormat(timestamp) 
-    }
+      type: Date,
+      get: (timestamp) => dateFormat(timestamp),
+    },
+    status: {
+      type: String,
+      maxlenght: 20,
+    },
   },
   {
     toJSON: {
@@ -28,7 +32,7 @@ const taskSchema = new Schema(
     },
   }
 );
-  
-const Task = model('Task', taskSchema);
+
+const Task = model("Task", taskSchema);
 
 module.exports = Task;

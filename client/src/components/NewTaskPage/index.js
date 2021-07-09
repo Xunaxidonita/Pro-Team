@@ -3,16 +3,23 @@ import TaskForm from "../TaskForm";
 import Nav from "../Nav";
 import { Segment } from "semantic-ui-react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+
+import { PROJECT } from "../../utils/queries";
 
 const NewTaskPage = () => {
   let { project_id } = useParams();
-  const project = {};
+
+  const { loadingProject, data: projectData } = useQuery(PROJECT, {
+    variables: { id: project_id },
+  });
+
   return (
     <>
       <Nav></Nav>
       <Segment raised style={{ margin: "45px" }}>
         <Segment.Inline>
-          <TaskForm></TaskForm>
+          <TaskForm project={projectData?.project}></TaskForm>
         </Segment.Inline>
       </Segment>
     </>

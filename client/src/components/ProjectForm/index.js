@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Dropdown, Input } from "semantic-ui-react";
 import { ADD_PROJECT } from "../../utils/mutations";
 import { QUERY_USERS } from "../../utils/queries";
