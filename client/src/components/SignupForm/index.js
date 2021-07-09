@@ -32,14 +32,14 @@ const SignUpForm = () => {
         required
         id="form-input-control-username"
         control={Input}
-        label="Username"
+        label="Username (must be 5-12 characters)"
         placeholder="Username"
         width={6}
         name="username"
         value={state.name}
         onChange={handleChange}
+      
       />
-
       <Form.Field
         required
         id="form-input-control-email"
@@ -55,7 +55,7 @@ const SignUpForm = () => {
         required
         id="form-input-control-password"
         control={Input}
-        label="Password"
+        label="Password (must be at least 5 characters)"
         placeholder="Password"
         width={6}
         name="password"
