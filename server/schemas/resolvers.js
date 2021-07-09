@@ -43,7 +43,8 @@ const resolvers = {
 
         project: async (parent, { _id }) => {
             return Project.findOne({ _id })
-            .select('-__v');
+            .select('-__v')
+            .populate('assignedTo');
         },
 
         userTasks: async (parent, { username }) => {
@@ -67,6 +68,7 @@ const resolvers = {
 
             return user;
         },
+
         addProject: async (parent, args) => {
             const project = await Project.create(args);
 
@@ -74,12 +76,37 @@ const resolvers = {
         },
 
         addTask: async (parent, args) => {
-            const task = await Task.create(args);
+            const newTask = await Task.create(args)
+            .then(Project.findOneAndUpdate(
+                { _id: projectId },
+                { $push: { tasks:  newTask } },
+                { new: true }
+            ));
 
-            return task;
-        }
+            return newTask;
+        },
+
+        updateTask: async (parent, args) => {
+            const updatedTask = await Task.findOneAndUpdate(
+                { _id: _id },
+                { taskName, taskText, assignedTo, dueDate },
+                { new: true }
+            );
+
+            return updatedTask;
+        },
+
+        updateProject: async (parent, args) => {
+            const updatedProject = await Project.findOneAndUpdate(
+                { _id },
+                { projectName, assignedTo, taskCount, taskIds, dueDate},
+                { new: true }
+            );
+
+            return updatedProject;
+        },
     }
-}
+};
 
 
 // GET (Queries):

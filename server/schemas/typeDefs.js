@@ -43,8 +43,10 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): User
     login(email: String!, password: String!): User
-    addProject(projectName: String!, assignedTo: ID, taskCount: Int, taskIds: ID, dueDate: String): Project
-    addTask(taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
+    addProject(projectName: String, assignedTo: ID, taskIds: ID, dueDate: String): Project
+    updateProject(projectId: ID, projectName: String, assignedTo: ID, taskIds: ID, dueDate: String): Project
+    addTask(projectId: ID, taskName: String, taskText: String, assignedTo: ID, dueDate: String): Project
+    updateTask(projectId: ID, _id: ID, taskName: String, taskText: String, assignedTo: ID, dueDate: String): Task
 }
 `;
 /*

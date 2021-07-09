@@ -17,10 +17,6 @@ const projectSchema = new Schema(
         type: Date,
         get: timestamp => dateFormat(timestamp)
     },
-    username: {
-      type: String,
-      required: true
-    },
     tasks: [{
       type: Schema.Types.ObjectId,
       ref: 'Task'
