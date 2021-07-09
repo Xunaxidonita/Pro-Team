@@ -22,9 +22,6 @@ export const QUERY_PROJECTS = gql`
     projects(username: $username) {
       _id
       projectName
-      assignedTo {
-        _id
-      }
       dueDate
       tasks {
         taskName
@@ -67,12 +64,10 @@ export const QUERY_CATEGORIES = gql`
 =======
 export const PROJECT = gql`
   query project($id: ID!) {
-    projects(_id: $id) {
+    project(id: $id) {
       _id
       projectName
-      assignedTo
       dueDate
-      username
       tasks {
         taskName
         dueDate

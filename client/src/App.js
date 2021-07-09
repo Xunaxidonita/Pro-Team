@@ -63,14 +63,11 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={ProjectsPage} />
-          <Route path="/projects/new">
-            <NewProjectPage />
-          </Route>
-          <Route exact path="/projects">
-            <ProjectsPage />
-          </Route>
+          <Route path="/projects/new" component={NewProjectPage} />
+          <Route exact path="/projects" component={ProjectsPage} />
+          <Route exact path="/projects/:id" component={ProjectViewerPage} />
           <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpForm} />
+          <Route path="/signup" component={SignUpPage} />
         </Switch>
       </Router>
     </ApolloProvider>

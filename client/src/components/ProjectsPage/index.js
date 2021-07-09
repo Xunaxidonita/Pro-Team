@@ -15,7 +15,6 @@ import { useQuery } from "@apollo/client";
 
 import { Header, Icon } from "semantic-ui-react";
 
-import { QUERY_PROJECTS } from "../../utils/queries";
 import { QUERY_ME } from "../../utils/queries";
 import AuthService from "../../utils/auth";
 
