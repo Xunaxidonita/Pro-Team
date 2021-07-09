@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, ObjectId } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema(
@@ -28,6 +28,12 @@ const userSchema = new Schema(
         ref: "Task",
       },
     ],
+    projects: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Project",
+      },
+    ],
   },
   {
     toJSON: {
@@ -35,11 +41,6 @@ const userSchema = new Schema(
     },
   }
 );
-userSchema.virtual("projects", {
-  ref: "Project",
-  localField: "_id",
-  foreignField: "members",
-});
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {
@@ -49,6 +50,7 @@ userSchema.pre("save", async function (next) {
   }
 
   next();
+  3;
 });
 
 // compare the incoming password with the hashed password

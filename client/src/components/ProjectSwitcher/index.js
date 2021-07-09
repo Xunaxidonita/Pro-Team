@@ -7,20 +7,28 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
     <Sidebar.Pushable as={Segment.Group} raised>
       <Sidebar
         as={Menu}
-        animation="overlay"
+        animation="scale down"
         icon="labeled"
         inverted
         vertical
         visible
         width="thin"
       >
-        <Menu.Item as="a">
-          <Link to="/projects/new">Create New Project</Link>
-        </Menu.Item>
-
-        {projects?.map((project) => {
-          <Menu.Item as="a">{project.title}</Menu.Item>;
-        })}
+        {[
+          <Menu.Item as="a">
+            <Link to="/projects/new">Create New Project</Link>
+          </Menu.Item>,
+        ].concat(
+          projects?.map((project) => {
+            return (
+              <Menu.Item as="a">
+                <Link to={`/projects/${project._id}`}>
+                  {project.projectName}
+                </Link>
+              </Menu.Item>
+            );
+          })
+        )}
       </Sidebar>
 
       <Sidebar.Pusher>

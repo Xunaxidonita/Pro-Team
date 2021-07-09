@@ -41,7 +41,7 @@ const typeDefs = gql`
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]
     projects(username: String): [Project]
-    project(projectId: ID): Project
+    project(id: ID): Project
     userTasks(username: String): [Task]
     projTasks(projectId: ID): [Task]
   }

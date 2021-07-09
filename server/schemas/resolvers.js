@@ -1,12 +1,14 @@
+const { ObjectId } = require("mongoose").Types;
 const { User, Task, Project } = require("../models");
 const Session = require("../models/Session");
 
 const resolvers = {
   Query: {
     me: async (parent, { token }) => {
-      const session = await Session.findOne({ token })
-        .populate("user")
-        .populate("user.projects");
+      const session = await Session.findOne({ token }).populate({
+        path: "user",
+        populate: { path: "projects" },
+      });
 
       return session.user;
     },
@@ -39,8 +41,8 @@ const resolvers = {
       return Project.find().select("-__v");
     },
 
-    project: async (parent, { _id }) => {
-      return Project.findOne({ _id }).select("-__v");
+    project: async (parent, { id }) => {
+      return Project.findOne({ _id: id }).select("-__v");
     },
 
     userTasks: async (parent, { username }) => {
@@ -69,6 +71,18 @@ const resolvers = {
     },
     addProject: async (parent, args) => {
       const project = await Project.create(args);
+
+      debugger;
+
+      Promise.all(
+        args.members.map(async (user) => {
+          return await User.findByIdAndUpdate(
+            ObjectId(user._id),
+            { $push: { projects: project._id } },
+            { new: true, useFindAndModify: false }
+          );
+        })
+      );
 
       return project;
     },
