@@ -24,7 +24,11 @@
     "@apollo/client": "^3.3.21",
     "concurrently": "^6.2.0",
     "graphql": "^15.5.1",
+<<<<<<< HEAD
     "moment": "^2.29.1",
     "react-native-add-calendar-event": "^4.0.0"
+=======
+    "moment": "^2.29.1"
+>>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
   }
 }

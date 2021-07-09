@@ -1,4 +1,17 @@
+<<<<<<< HEAD
 import { gql } from '@apollo/client';
+=======
+// add user - have
+// add project - have
+// add task - have
+// update project
+// update task
+// delete user
+// delete project
+// delete task
+
+import { gql } from "@apollo/client";
+>>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -11,6 +24,7 @@ export const LOGIN = gql`
   }
 `;
 
+<<<<<<< HEAD
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {
@@ -24,11 +38,20 @@ export const ADD_ORDER = gql`
         category {
           name
         }
+=======
+export const ADD_USER = gql`
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
+      token
+      user {
+        _id
+>>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
       }
     }
   }
 `;
 
+<<<<<<< HEAD
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
@@ -46,6 +69,22 @@ export const ADD_USER = gql`
       user {
         _id
       }
+=======
+export const ADD_PROJECT = gql`
+  mutation addProject(
+    $projectName: String!
+    $description: String!
+    $members: [UserInput]
+    $dueDate: String
+  ) {
+    addProject(
+      projectName: $projectName
+      description: $description
+      members: $members
+      dueDate: $dueDate
+    ) {
+      _id
+>>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
     }
   }
 `;

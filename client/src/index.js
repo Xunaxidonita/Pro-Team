@@ -19,12 +19,18 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
+<<<<<<< HEAD
     render(
     <ApolloProvider client={client}>
       <App />
     </ApolloProvider>
     , document.getElementById('root'), );
     <App />
+=======
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+>>>>>>> c8165f36379472cb865f6ad0b50dcfb787858134
   </React.StrictMode>,
   document.getElementById("root")
 );
