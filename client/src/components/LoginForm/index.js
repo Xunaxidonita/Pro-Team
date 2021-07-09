@@ -43,6 +43,7 @@ const LoginForm = () => {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
+        <h2>Hello! Please log in to get started with Pro-Team.</h2>
         <Header as="h2" class="button" textAlign="center"></Header>
         <Form size="large" onSubmit={handleFormSubmit}>
           <Segment stacked>

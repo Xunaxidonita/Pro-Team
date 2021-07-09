@@ -15,12 +15,13 @@ const SignUpForm = () => {
   const handleSubmit = async () => {
     await signup({ variables: state });
     window.location.replace("/projects");
+
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h2 className='sign-up-header'>Sign Up for Pro-Team!</h2>
-      <h3 className='required-fields'>All Fields are Required</h3>
+      <h2 className="sign-up-header">Sign Up for Pro-Team!</h2>
+      <h4 className="required-fields">All Fields are Required</h4>
       <Form.Field
         required
         id="form-input-control-username"
@@ -38,7 +39,7 @@ const SignUpForm = () => {
         control={Input}
         label="Email Address"
         placeholder="Email Address"
-       width={6}
+        width={6}
         name="email"
         value={state.email}
         onChange={handleChange}
@@ -49,7 +50,7 @@ const SignUpForm = () => {
         control={Input}
         label="Password"
         placeholder="Password"
-      width={6}
+        width={6}
         name="password"
         value={state.password}
         onChange={handleChange}
@@ -58,7 +59,7 @@ const SignUpForm = () => {
         id="form-button-control-public"
         control={Button}
         content="Submit"
-        color='teal'
+        color="teal"
         // label="Label with htmlFor"
       />
     </Form>
