@@ -27,7 +27,7 @@ const SignUpForm = () => {
         control={Input}
         label="Username"
         placeholder="Username"
-      
+        width={6}
         name="username"
         value={state.name}
         onChange={handleChange}
@@ -38,7 +38,7 @@ const SignUpForm = () => {
         control={Input}
         label="Email Address"
         placeholder="Email Address"
-       
+       width={6}
         name="email"
         value={state.email}
         onChange={handleChange}
@@ -49,7 +49,7 @@ const SignUpForm = () => {
         control={Input}
         label="Password"
         placeholder="Password"
-      
+      width={6}
         name="password"
         value={state.password}
         onChange={handleChange}
@@ -58,6 +58,7 @@ const SignUpForm = () => {
         id="form-button-control-public"
         control={Button}
         content="Submit"
+        color='teal'
         // label="Label with htmlFor"
       />
     </Form>
