@@ -13,10 +13,6 @@ import ProjectViewerPage from "./components/ProjectViewerPage";
 import SignUpPage from "./components/SignUpPage";
 import NewTaskPage from "./components/NewTaskPage";
 import "semantic-ui-css/semantic.min.css";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-
-library.add(fas);
 
 function App() {
 

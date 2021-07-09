@@ -13,7 +13,12 @@ import { LOGIN } from "../../utils/mutations";
 import { Link } from "react-router-dom";
 import AuthService from "../../utils/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Card from './components/LoginCard';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import Card from '../LoginCard';
+
+library.add(fas);
+
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
