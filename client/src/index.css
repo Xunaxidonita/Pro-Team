@@ -29,3 +29,17 @@ code {
 .logo-card {
   float: right;
 }
+
+#homepage-link {
+  padding-left: 20px;
+  padding-top: 10px;
+  color: black;
+  
+}
+
+#logout-link {
+  padding-right: 20px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+

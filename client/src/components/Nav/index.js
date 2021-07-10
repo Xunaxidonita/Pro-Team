@@ -49,19 +49,21 @@ class NavMenu extends Component {
     const { activeItem } = this.state
 
     return (
-      <Menu color={color} inverted widths={2}>
-        <Menu.Item
-          name='home'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
+      <Menu color={color} inverted widths={12}>
+        {/* <Menu.Item
+        //   name='home'
+        //   active={activeItem === 'home'}
+        //   onClick={this.handleItemClick}
+        //   link to="/projects"
           
-        />  
-        {/* <Link to="/projects">Homepage</Link> */}
-        <Menu.Item
+        // />   */}
+        <Link to="/projects" id="homepage-link">Homepage</Link>
+        <Menu.Menu position="right" id="logout-link"
           name='logout'
           content="Logout"
           active={activeItem === 'logout'}
           onClick={logout}
+          
         />
             <a href="/"></a>
       </Menu>
