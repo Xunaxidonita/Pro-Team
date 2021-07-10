@@ -60,8 +60,9 @@ export const PROJECT_TASKS = gql`
 `;
 
 export const QUERY_ME = gql`
-  query me($token: String) {
-    me(token: $token) {
+   {
+    me {
+      _id
       username
       email
       projectCount

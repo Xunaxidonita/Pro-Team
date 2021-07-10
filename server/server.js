@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-// import ApolloServer
+const mongoose = require('mongoose');
 const { ApolloServer } = require('apollo-server-express');
 
 // import our typeDefs and resolvers
@@ -27,6 +27,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
+mongoose.set('debug', true);
 db.once('open', () => {
   app.listen(PORT, () => {
     console.log(`API server running on port ${PORT}!`);

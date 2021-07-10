@@ -6,16 +6,14 @@ import { useQuery } from "@apollo/client";
 import { Header, Icon } from "semantic-ui-react";
 
 import { QUERY_ME } from "../../utils/queries";
-import AuthService from "../../utils/auth";
+
 
 const ProjectsPage = () => {
-  const { loading, data: userData } = useQuery(QUERY_ME, {
-    variables: { token: AuthService.getToken() },
-  });
+  const { loading, data: userData } = useQuery(QUERY_ME);
 
   const projects = userData?.me?.projects;
-  const username = userData?.me?.username;
-  console.log(`Line 18: ${userData}`);
+  const username = 'username';
+  console.log(`User Data: ${userData}`);
 
   return (
     <>
