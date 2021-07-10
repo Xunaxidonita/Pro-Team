@@ -13,6 +13,7 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
         vertical
         visible
         width="thin"
+        color='teal'
       >
         {[
           <Menu.Item as="a">
