@@ -14,6 +14,8 @@ const ProjectsPage = () => {
   });
 
   const projects = userData?.me?.projects;
+  const username = userData?.me?.username;
+  console.log(`Line 18: ${userData}`);
 
   return (
     <>
@@ -25,7 +27,7 @@ const ProjectsPage = () => {
         ) : (
           <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
             <Icon name="tasks" />
-            Welcome {userData.me.username}
+            Welcome {username}
           </Header>
         )}
       </ProjectSwitcher>
