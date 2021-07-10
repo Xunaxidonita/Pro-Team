@@ -1,17 +1,22 @@
 const { ObjectId } = require("mongoose").Types;
 const { User, Task, Project } = require("../models");
-const Session = require("../models/Session");
+const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
-    me: async (parent, { token }) => {
-      const session = await Session.findOne({ token }).populate({
-        path: "user",
-        populate: { path: "projects" },
-      });
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+        .select('-__v -password')
+        .populate('projects')
+        .populate('tasks');
+        
+        return userData;
+      }
 
-      return session.user;
-    },
+      throw new AuthenticationError('Not logged In');
+     },
 
     users: async () => {
       return User.find()
@@ -63,11 +68,9 @@ const resolvers = {
   Mutation: {
     addUser: async (parent, args) => {
       const user = await User.create(args);
-      const token = "123"; // TODO: generate token
+      const token = signToken(user);
 
-      const session = await Session.create({ token, user });
-
-      return session;
+      return {token, user};
     },
     addProject: async (parent, args) => {
       const project = await Project.create(args);
@@ -94,17 +97,18 @@ const resolvers = {
     },
 
     login: async (parent, { email, password }) => {
-      const token = "123"; // TODO: generate token
       const user = await User.findOne({ email });
-
-      console.log(user);
-
-      if (await user.isCorrectPassword(password)) {
-        const session = await Session.create({ token, user });
-        return await Session.findOne({ _id: session._id }).populate("user");
+      if (!user) {
+        throw new AuthenticationError('No User found');
       }
 
-      throw "Incorrect password";
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect email or password');
+      }
+      const token = signToken(user);
+      return {token, user}
     },
   },
 };

@@ -6,16 +6,25 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Card from '../LoginCard';
 // still need sub-headings that tell user how many characters to use for username and pw
+import auth from "../../utils/auth";
+// still need sub-headings that tell user how many character to use for username and pw
 
 const SignUpForm = () => {
   const [state, setState] = useState({});
-  const [signup, { data }] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
   const handleChange = (e, { name, value }) =>
     setState({ ...state, [name]: value });
 
-  const handleSubmit = async () => {
-    await signup({ variables: state });
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({ variables: state });
+      auth.login(data.addUser.token);
+  } catch (e) {
+    console.error(e)
+  }
     window.location.replace("/projects");
 
   };
