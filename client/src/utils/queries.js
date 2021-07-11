@@ -7,10 +7,7 @@ export const QUERY_PROJECTS = gql`
       _id
       projectName
       dueDate
-      tasks {
-        taskName
-        dueDate
-      }
+     status
     }
   }
 `;
@@ -25,15 +22,13 @@ export const QUERY_USERS = gql`
 `;
 
 export const PROJECT = gql`
-  query project($id: ID!) {
-    project(id: $id) {
+  query project($_id: ID) {
+    project(_id: $_id) {
       _id
       projectName
+      description
       dueDate
-      tasks {
-        taskName
-        dueDate
-      }
+      status
     }
   }
 `;

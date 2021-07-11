@@ -8,20 +8,26 @@ import { useQuery } from "@apollo/client";
 import { PROJECT } from "../../utils/queries";
 
 const NewTaskPage = () => {
-  let { project_id } = useParams();
+  let { _id } = useParams();
 
-  const { loadingProject, data: projectData } = useQuery(PROJECT, {
-    variables: { id: project_id },
+  const { loadingProject, data: projectData, error } = useQuery(PROJECT, {
+    variables: { _id },
   });
+
 
   return (
     <>
       <Nav></Nav>
       <Segment raised style={{ margin: "45px" }}>
         <Segment.Inline>
-          <TaskForm project={projectData?.project}></TaskForm>
+          {loadingProject ? (
+            <div>Loading...</div>
+          ) : (
+            <TaskForm project={projectData?.project}></TaskForm>
+          )}
         </Segment.Inline>
       </Segment>
+      {error && <div>Something went wrong, please try again</div>}
     </>
   );
 };

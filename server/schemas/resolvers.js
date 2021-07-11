@@ -1,4 +1,3 @@
-const { ObjectId } = require("mongoose").Types;
 const { User, Task, Project } = require("../models");
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
@@ -46,8 +45,12 @@ const resolvers = {
       return Project.find().select("-__v");
     },
 
-    project: async (parent, { id }) => {
-      return Project.findOne({ _id: id }).select("-__v");
+    project: async (parent, { _id }) => {
+      console.log({ _id })
+      return Project.findOne({ _id })
+      .select("-__v")
+      .populate('members')
+      .populate('tasks');
     },
 
     userTasks: async (parent, { username }) => {
@@ -72,25 +75,28 @@ const resolvers = {
 
       return {token, user};
     },
-    addProject: async (parent, args) => {
-      const project = await Project.create(args);
+    addProject: async (parent, args, context) => {
+      if (context.user) {
+        const project = await Project.create(args);
+        
+        await Project.findByIdAndUpdate(
+          { _id: project._id },
+          { $push: { members: { $each: args.members } } },
+          { new: true });
 
-      debugger;
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { projects: project._id } },
+          {new: true }
+        );
 
-      Promise.all(
-        args.members.map(async (user) => {
-          return await User.findByIdAndUpdate(
-            ObjectId(user._id),
-            { $push: { projects: project._id } },
-            { new: true, useFindAndModify: false }
-          );
-        })
-      );
+        return project;
+      }
 
-      return project;
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    addTask: async (parent, args) => {
+    addTask: async (parent, args, context) => {
       const task = await Task.create(args);
 
       return task;
@@ -110,6 +116,20 @@ const resolvers = {
       const token = signToken(user);
       return {token, user}
     },
+
+    updateProjectStatus: async (parent, { _id, status }, context) => {
+      if (context.user) {
+       const updatedProject = await Project.findOneAndUpdate(
+          { _id},
+          { status },
+          { new: true}
+          );
+
+          return updatedProject;
+      }
+
+      throw new AuthenticationError("You must be logged in.");
+    }
   },
 };
 

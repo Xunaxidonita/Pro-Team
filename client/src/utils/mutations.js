@@ -15,6 +15,7 @@ export const LOGIN = gql`
       token
       user {
         _id
+        username
       }
     }
   }
@@ -32,19 +33,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation addProject(
-    $projectName: String!
-    $description: String!
-    $members: [User]
-    $dueDate: String
-  ) {
-    addProject(
-      projectName: $projectName
-      description: $description
-      members: $members
-      dueDate: $dueDate
-    ) {
+  mutation addProject($projectName: String, $description: String, $members: [ID], $dueDate: String) {
+    addProject(projectName: $projectName, description: $description, members: $members, dueDate: $dueDate) {
       _id
+      projectName
+      description
+      members {
+        _id
+        username
+      }
+      dueDate
     }
   }
 `;
@@ -64,6 +62,16 @@ export const ADD_TASK = gql`
       status: $status
     ) {
       _id
+    }
+  }
+`;
+
+export const UPDATE_PROJECT_STATUS = gql`
+  mutation updateProjectStatus($_id: ID, $status: String) {
+    updateProjectStatus(_id: $_id, status: $status) {
+      _id
+      projectName
+      status
     }
   }
 `;

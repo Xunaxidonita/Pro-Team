@@ -15,6 +15,7 @@ type Auth {
     taskCount: Int
     tasks: [Task]
     dueDate: String
+    status: String
   }
 
   type Task {
@@ -35,18 +36,13 @@ type Auth {
     tasks: [Task]
   }
 
-  type Session {
-    token: String
-    user: User
-  }
-
   type Query {
     me: User
     users: [User]
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]
     projects(username: String): [Project]
-    project(id: ID): Project
+    project(_id: ID): Project
     userTasks(username: String): [Task]
     projTasks(projectId: ID): [Task]
   }
@@ -56,11 +52,11 @@ type Auth {
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Session
-    login(email: String!, password: String!): Session
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addProject(
-      projectName: String!
-      members: [UserInput]
+      projectName: String
+      members: [ID]
       description: String
       dueDate: String
     ): Project
@@ -70,6 +66,7 @@ type Auth {
       assignedTo: ID
       dueDate: String
     ): Project
+      updateProjectStatus(_id: ID, status: String): Project
   }
 `;
 /* Do we need a get all users query? I can't think of a situation in which we would need one */

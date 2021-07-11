@@ -1,23 +1,48 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Dropdown, Input } from "semantic-ui-react";
 import { ADD_PROJECT } from "../../utils/mutations";
-import { QUERY_USERS } from "../../utils/queries";
+import { QUERY_ME, QUERY_PROJECTS, QUERY_USERS } from "../../utils/queries";
 import Calendar from "rc-calendar";
 import "rc-calendar/assets/index.css";
 import { useMutation, useQuery } from "@apollo/client";
 
 const ProjectForm = () => {
-  const [createProject, { data }] = useMutation(ADD_PROJECT);
-  const { loading, data: users } = useQuery(QUERY_USERS, {
-    variables: {},
-  });
-  const [state, setState] = useState({});
+  const { data: users } = useQuery(QUERY_USERS);
+  const [state, setState] = useState({ projectName: '', description: '', members: [], dueDate: '' });
+  const [addProject, { error }] = useMutation(ADD_PROJECT, {
+    update(cache, { data: { addProject } }) {
+      try {
+        const { projects } = cache.readQuery({ query: QUERY_PROJECTS });
 
-  const handleChange = (e, { name, value }) =>
-    setState({ ...state, [name]: value });
+      cache.writeQuery({
+        query: QUERY_PROJECTS,
+        data: { projects: [addProject, ...projects] }
+      });
+    } catch (e) {
+      console.error(e);
+    }
+
+    const { me } = cache.readQuery({ query: QUERY_ME });
+    cache.writeQuery({
+      query: QUERY_ME,
+      data: { me: { ...me, projects: [...me.projects, addProject]}}
+    });
+  }
+  });
+  
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setState({
+      ...state,
+      [name]: value,
+    });
+  };
 
   const handleMulti = (e, { value }) => {
-    setState({ ...state, members: value });
+    
+    setState({...state, members: value });
   };
 
   const handleSelect = (date) => {
@@ -27,24 +52,26 @@ const ProjectForm = () => {
   const members = users?.users?.map((user) => {
     return {
       key: user._id,
-      value: { _id: user._id },
+      value: user._id,
       text: user.username,
     };
   });
 
-  const handleSubmit = () => {
-    createProject({ variables: state });
+  const handleSubmit = async event => {
+   event.preventDefault();
+   console.log(state);
+   try {
+    await addProject({
+      variables: state
+    });
+    
+    setState({ projectName: '', description: '', members: [], dueDate: '' });
+    window.location.assign('/projects');
+   } catch (e) {
+     console.error(e);
+   }
+   
   };
-
-  // const members2 = [
-  //   { key: "ja", value: "ja", text: "Johnny Appleseed" },
-  //   { key: "db", value: "db", text: "Daniel Boon" },
-  // ];
-  // const options = [
-  //   { key: "ag", value: "ag", text: "Assigned" },
-  //   { key: "ip", value: "ip", text: "In Progress" },
-  //   { key: "cm", value: "cm", text: "Completed" },
-  // ];
 
   return (
     <Form onSubmit={handleSubmit}>
@@ -73,11 +100,13 @@ const ProjectForm = () => {
         selection
         options={members}
         onChange={handleMulti}
-      ></Dropdown>
+      />
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
-      <Button type="submit" id="new-project-button" color='teal'>Submit</Button>
+      <Button type="submit">Submit</Button>
+      {error && <div>Something went wrong, Please reload and try again.</div>}
     </Form>
+  
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -79,6 +79,7 @@ const SignUpForm = () => {
         color="teal"
         // label="Label with htmlFor"
       />
+      {error && <div>Something went wrong, please try again.</div>}
     </Form>
   );
 };

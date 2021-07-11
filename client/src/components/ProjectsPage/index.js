@@ -9,11 +9,11 @@ import { QUERY_ME } from "../../utils/queries";
 
 
 const ProjectsPage = () => {
-  const { loading, data: userData } = useQuery(QUERY_ME);
+  const { loading, data} = useQuery(QUERY_ME);
 
-  const projects = userData?.me?.projects;
-  const username = 'username';
-  console.log(`User Data: ${userData}`);
+  const projects = data?.me?.projects;
+  const username = data?.me?.username;
+  
 
   return (
     <>

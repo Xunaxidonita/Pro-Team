@@ -6,7 +6,7 @@ import { ADD_TASK } from "../../utils/mutations";
 
 const TaskForm = ({ project }) => {
   const [state, setState] = useState({});
-  const [createTask, { data }] = useMutation(ADD_TASK);
+  const [createTask, { error }] = useMutation(ADD_TASK);
   const handleChange = (e, { name, value }) =>
     setState({ ...state, [name]: value });
 
@@ -25,6 +25,7 @@ const TaskForm = ({ project }) => {
   ];
 
   if (!project) {
+   console.log("there was a problem")
     return false;
   }
 
@@ -56,6 +57,7 @@ const TaskForm = ({ project }) => {
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
       <Button type="submit">Submit</Button>
+      {error && <div>Something went wrong, Please try again.</div>}
     </Form>
   );
 };

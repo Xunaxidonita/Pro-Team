@@ -4,20 +4,19 @@ import {
   Form,
   Grid,
   Header,
-  Icon,
   Message,
   Segment,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import { Link } from "react-router-dom";
-import AuthService from "../../utils/auth";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import Card from '../LoginCard';
 
 library.add(fas);
 
+import Auth from "../../utils/auth";
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -26,17 +25,19 @@ const LoginForm = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await login({
+      const { data } = await login({
         variables: { email: formState.email, password: formState.password },
       });
 
-      if (response) {
-        AuthService.login(response.data.login.token);
-        window.location.replace("/projects");
-      }
+      Auth.login(data.login.token);
     } catch (e) {
       console.log(e);
     }
+
+    setFormState({
+      email: '',
+      password: ''
+    });
   };
 
   const handleChange = (event, { name, value }) => {
@@ -83,6 +84,7 @@ const LoginForm = () => {
         <Message color='teal'>
           New to us? <Link to="/signup">Sign Up</Link>
         </Message>
+        {error && <div>Login Failed</div>}
       </Grid.Column>
     </Grid>
   );
