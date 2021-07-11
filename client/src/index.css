@@ -43,3 +43,7 @@ code {
   cursor: pointer;
 }
 
+#new-project-button {
+  margin-top: 20px;
+}
+

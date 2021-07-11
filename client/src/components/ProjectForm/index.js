@@ -76,7 +76,7 @@ const ProjectForm = () => {
       ></Dropdown>
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
-      <Button type="submit" color='teal'>Submit</Button>
+      <Button type="submit" id="new-project-button" color='teal'>Submit</Button>
     </Form>
   );
 };
