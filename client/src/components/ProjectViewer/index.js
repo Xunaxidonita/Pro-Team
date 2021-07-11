@@ -38,10 +38,10 @@ const updateHandler = async (event) => {
   
   return (
     <>
-      <h1>Project: {project?.projectName}</h1>
-      {project?.status && <h2>Status: {project?.status}</h2>}
-      <h4>Due Date: {project?.dueDate}</h4>
-      <h4>Description: {project?.description}</h4>
+      <h1 id="project-info">Project Name: <span id="project-name">{project?.projectName}</span></h1>
+      {project?.status && <h2 id="project-info">Status: <span id="project-status">{project?.status}</span></h2>}
+      <h4 id="project-info">Due Date: <span id="project-due-date">{project?.dueDate}</span></h4>
+      <h4 id="project-info">Description: <span id="project-desc">{project?.description}</span></h4>
 
       <Form onSubmit={updateHandler}>
         <Input value={statusText} placeholder="Project Status" onChange={handleChange}/>

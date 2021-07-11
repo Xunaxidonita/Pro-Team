@@ -50,3 +50,20 @@ code {
 #update-project-button {
   margin-left: 12px;
 }
+
+#project-name {
+ 
+  color: #d0705a;
+}
+#project-status {
+  color: #479c9c;
+}
+#project-due-date {
+ font-size: large;
+  color: #bcd42a;
+}
+.project-info, #project-desc  {
+
+
+  color: black;
+}
