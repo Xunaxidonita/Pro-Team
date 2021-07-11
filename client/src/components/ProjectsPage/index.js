@@ -11,7 +11,6 @@ import { QUERY_ME } from "../../utils/queries";
 const ProjectsPage = () => {
   const { loading, data} = useQuery(QUERY_ME);
 
-  console.log(data);
   const projects = data?.me?.projects;
   const username = data?.me?.username;
   

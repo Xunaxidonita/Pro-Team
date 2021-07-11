@@ -8,11 +8,12 @@ import { useQuery } from "@apollo/client";
 import { PROJECT } from "../../utils/queries";
 
 const NewTaskPage = () => {
-  let { project_id } = useParams();
+  let { _id } = useParams();
 
-  const { loadingProject, data: projectData } = useQuery(PROJECT, {
-    variables: { _id: project_id },
+  const { loadingProject, data: projectData, error } = useQuery(PROJECT, {
+    variables: { _id },
   });
+
 
   return (
     <>
@@ -26,6 +27,7 @@ const NewTaskPage = () => {
           )}
         </Segment.Inline>
       </Segment>
+      {error && <div>Something went wrong, please try again</div>}
     </>
   );
 };

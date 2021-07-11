@@ -41,7 +41,7 @@ type Auth {
     userByUsername(username: String): User
     projsByUser(projectId: ID): [Project]
     projects(username: String): [Project]
-    project(id: ID): Project
+    project(_id: ID): Project
     userTasks(username: String): [Task]
     projTasks(projectId: ID): [Task]
   }

@@ -46,7 +46,11 @@ const resolvers = {
     },
 
     project: async (parent, { _id }) => {
-      return Project.findOne({ _id: _id }).select("-__v");
+      console.log({ _id })
+      return Project.findOne({ _id })
+      .select("-__v")
+      .populate('members')
+      .populate('tasks');
     },
 
     userTasks: async (parent, { username }) => {
@@ -92,7 +96,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    addTask: async (parent, args) => {
+    addTask: async (parent, args, context) => {
       const task = await Task.create(args);
 
       return task;

@@ -1,8 +1,7 @@
 import React from "react";
 import TaskSwimlanesAll from "../TaskSwimlanes";
 import Toggle from "../Toggle";
-import { Label } from "semantic-ui-react";
-import { Button } from "semantic-ui-react";
+import { Label, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const ProjectView = ({ project }) => {
@@ -10,13 +9,18 @@ const ProjectView = ({ project }) => {
     return false;
   }
 
+  const newTaskHandler = event => {
+    event.preventDefault();
+    window.location.assign(`/projects/${project?._id}/tasks/new`);
+  }
+  
   return (
     <>
     <Label>See all Project Tasks</Label>
       <h1>{project?.projectName}</h1>
       <Toggle></Toggle>
-      <Button>
-        <Link to={`/projects/${project?._id}/tasks/new`}>Add Task</Link>
+      <Button onClick={newTaskHandler}>
+        Add Task
       </Button>
       <TaskSwimlanesAll tasks={project?.tasks}></TaskSwimlanesAll>
     </>

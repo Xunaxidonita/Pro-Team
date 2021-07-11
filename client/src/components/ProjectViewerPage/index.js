@@ -5,17 +5,14 @@ import ProjectViewer from "../ProjectViewer/index";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, PROJECT } from "../../utils/queries";
-import AuthService from "../../utils/auth";
 
 const ProjectViewerPage = () => {
-  let { id } = useParams();
+  let { _id } = useParams();
 
-  const { loading, data: userData } = useQuery(QUERY_ME, {
-    variables: { token: AuthService.getToken() },
-  });
+  const { loading, data: userData } = useQuery(QUERY_ME);
 
   const { loadingProject, data: projectData } = useQuery(PROJECT, {
-    variables: { id: id },
+    variables: { _id },
   });
 
   const projects = userData?.me?.projects;

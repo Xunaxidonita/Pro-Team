@@ -51,11 +51,11 @@ function App() {
           <Route exact path="/projects/new">
             <NewProjectPage />
           </Route>
-          <Route path="/projects/:id/tasks/new">
-            <NewTaskPage />
-          </Route>
-          <Route path="/projects/:id">
+          <Route path="/projects/:_id">
             <ProjectViewerPage />
+          </Route>
+          <Route path="/projects/:_id/tasks/new">
+            <NewTaskPage />
           </Route>
         </Switch>
       </Router>
