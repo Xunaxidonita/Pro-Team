@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Nav from "../Nav/index.js";
 import ProjectSwitcher from "../ProjectSwitcher/index";
 import { useQuery } from "@apollo/client";
 
 import { Header, Icon } from "semantic-ui-react";
-import { useLazyQuery } from "@apollo/client";
+
 import { QUERY_ME } from "../../utils/queries";
 
 

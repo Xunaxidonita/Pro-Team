@@ -8,7 +8,6 @@ import { useMutation, useQuery } from "@apollo/client";
 
 const ProjectForm = () => {
   const { data: users } = useQuery(QUERY_USERS);
-  const projMembers = [];
   const [state, setState] = useState({ projectName: '', description: '', members: [], dueDate: '' });
   const [addProject, { error }] = useMutation(ADD_PROJECT, {
     update(cache, { data: { addProject } }) {
@@ -105,7 +104,9 @@ const ProjectForm = () => {
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
       <Button type="submit">Submit</Button>
+      {error && <div>Something went wrong, Please reload and try again.</div>}
     </Form>
+  
   );
 };
 

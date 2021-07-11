@@ -19,7 +19,11 @@ const NewTaskPage = () => {
       <Nav></Nav>
       <Segment raised style={{ margin: "45px" }}>
         <Segment.Inline>
-          <TaskForm project={projectData?.project}></TaskForm>
+          {loadingProject ? (
+            <div>Loading...</div>
+          ) : (
+            <TaskForm project={projectData?.project}></TaskForm>
+          )}
         </Segment.Inline>
       </Segment>
     </>
