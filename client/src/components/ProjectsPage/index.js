@@ -25,7 +25,7 @@ const ProjectsPage = () => {
         ) : (
           <Header icon style={{ marginTop: "30px", marginBottom: "30px" }}>
             <Icon name="tasks" />
-            Welcome {username}
+            Welcome, {username}!
           </Header>
         )}
       </ProjectSwitcher>
