@@ -66,6 +66,16 @@ export const ADD_TASK = gql`
   }
 `;
 
+export const UPDATE_PROJECT_STATUS = gql`
+  mutation updateProjectStatus($_id: ID, $status: String) {
+    updateProjectStatus(_id: $_id, status: $status) {
+      _id
+      projectName
+      status
+    }
+  }
+`;
+
 // export const ADD_PROJECT_TO_USER = gql`
 //   mutation addProjectToUser(
 //     $projectName: String

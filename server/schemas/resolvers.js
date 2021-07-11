@@ -116,6 +116,20 @@ const resolvers = {
       const token = signToken(user);
       return {token, user}
     },
+
+    updateProjectStatus: async (parent, { _id, status }, context) => {
+      if (context.user) {
+       const updatedProject = await Project.findOneAndUpdate(
+          { _id},
+          { status },
+          { new: true}
+          );
+
+          return updatedProject;
+      }
+
+      throw new AuthenticationError("You must be logged in.");
+    }
   },
 };
 

@@ -14,6 +14,7 @@ import ProjectViewerPage from "./components/ProjectViewerPage";
 import SignUpPage from "./components/SignUpPage";
 import NewTaskPage from "./components/NewTaskPage";
 import "semantic-ui-css/semantic.min.css";
+import TaskCard from "./components/TaskCard";
 
 const httpLink = createHttpLink({
   url: "/graphql",
@@ -53,9 +54,6 @@ function App() {
           </Route>
           <Route path="/projects/:_id">
             <ProjectViewerPage />
-          </Route>
-          <Route path="/projects/:_id/tasks/new">
-            <NewTaskPage />
           </Route>
         </Switch>
       </Router>

@@ -34,6 +34,10 @@ const projectSchema = new Schema(
         ref: "Task",
       },
     ],
+
+    status: {
+      type: String
+    }
   },
   {
     toJSON: {

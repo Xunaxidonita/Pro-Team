@@ -15,6 +15,7 @@ type Auth {
     taskCount: Int
     tasks: [Task]
     dueDate: String
+    status: String
   }
 
   type Task {
@@ -65,6 +66,7 @@ type Auth {
       assignedTo: ID
       dueDate: String
     ): Project
+      updateProjectStatus(_id: ID, status: String): Project
   }
 `;
 /* Do we need a get all users query? I can't think of a situation in which we would need one */
