@@ -25,7 +25,7 @@ export const QUERY_USERS = gql`
 `;
 
 export const PROJECT = gql`
-  query project($id: ID!) {
+  query project($id: ID) {
     project(id: $id) {
       _id
       projectName

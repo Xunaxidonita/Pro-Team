@@ -1,19 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../Nav/index.js";
 import ProjectSwitcher from "../ProjectSwitcher/index";
 import { useQuery } from "@apollo/client";
 
 import { Header, Icon } from "semantic-ui-react";
-
+import { useLazyQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 
 
 const ProjectsPage = () => {
-  const { loading, data: userData } = useQuery(QUERY_ME);
+  const { loading, data} = useQuery(QUERY_ME);
 
-  const projects = userData?.me?.projects;
-  const username = 'username';
-  console.log(`User Data: ${userData}`);
+  console.log(data);
+  const projects = data?.me?.projects;
+  const username = data?.me?.username;
+  
 
   return (
     <>

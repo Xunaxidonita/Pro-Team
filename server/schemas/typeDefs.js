@@ -35,11 +35,6 @@ type Auth {
     tasks: [Task]
   }
 
-  type Session {
-    token: String
-    user: User
-  }
-
   type Query {
     me: User
     users: [User]
@@ -56,11 +51,11 @@ type Auth {
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Session
-    login(email: String!, password: String!): Session
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addProject(
-      projectName: String!
-      members: [UserInput]
+      projectName: String
+      members: [ID]
       description: String
       dueDate: String
     ): Project

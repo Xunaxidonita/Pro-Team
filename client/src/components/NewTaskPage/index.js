@@ -11,7 +11,7 @@ const NewTaskPage = () => {
   let { project_id } = useParams();
 
   const { loadingProject, data: projectData } = useQuery(PROJECT, {
-    variables: { id: project_id },
+    variables: { _id: project_id },
   });
 
   return (

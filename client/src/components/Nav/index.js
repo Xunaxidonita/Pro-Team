@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import auth from "../../utils/auth";
 
 const Nav = () => {
+
+useEffect(() => {
+  const loggedOut = auth.isTokenExpired();
+
+  if (loggedOut) {
+    window.location.replace('/');
+  }
+})
 
 const logout = event => {
   event.preventDefault();
