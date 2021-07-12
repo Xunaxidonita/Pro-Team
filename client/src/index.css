@@ -50,7 +50,10 @@ code {
 #update-project-button {
   margin-left: 12px;
 }
-
+.project-info, #project-desc  {
+  color: black;
+  }
+  
 #project-name {
  
   color: #d0705a;
@@ -62,8 +65,12 @@ code {
  font-size: large;
   color: #bcd42a;
 }
-.project-info, #project-desc  {
 
+#create-new-project {
+  font-weight: 900;
+  font-size: medium;
+}
 
-  color: black;
+#new-project-submit {
+  margin-top: 10px;
 }
