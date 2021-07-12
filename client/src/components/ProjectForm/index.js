@@ -103,12 +103,8 @@ const ProjectForm = () => {
       />
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
-<<<<<<< HEAD
-      <Button type="submit">Submit</Button>
-      {error && <div>Something went wrong, Please reload and try again.</div>}
-=======
       <Button type="submit" color='teal'>Submit</Button>
->>>>>>> feature/css-jessica
+      {error && <div>Something went wrong, Please reload and try again.</div>}
     </Form>
   
   );

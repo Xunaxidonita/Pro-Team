@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, { useEffect } from "react";
-=======
 import React, { Component } from "react";
->>>>>>> feature/css-jessica
 import { Menu } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import auth from "../../utils/auth";
@@ -35,14 +31,6 @@ const navColor = [
   'teal'
 
 ]
-
-useEffect(() => {
-  const loggedOut = auth.isTokenExpired();
-
-  if (loggedOut) {
-    window.location.replace('/');
-  }
-})
 
 const logout = event => {
   event.preventDefault();
