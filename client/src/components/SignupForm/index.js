@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "semantic-ui-react";
+import { Button, Form, Input, Message, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -30,6 +31,7 @@ const SignUpForm = () => {
   };
 
   return (
+    <div>
     <Form onSubmit={handleSubmit}>
       <h2 className="sign-up-header">Sign Up for Pro-Team!</h2>
       <div className='logo-card'><Card /></div>
@@ -79,8 +81,14 @@ const SignUpForm = () => {
         color="teal"
         // label="Label with htmlFor"
       />
+       
       {error && <div>Something went wrong, please try again.</div>}
     </Form>
+     <Message id="go-back-message" width={6} attached='bottom' compact>
+     <Icon name='arrow alternate circle left' />
+     Already signed up?&nbsp;<a href='/'>Login here</a>&nbsp;instead.
+   </Message>
+   </div>
   );
 };
 

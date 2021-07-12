@@ -74,3 +74,9 @@ code {
 #new-project-submit {
   margin-top: 10px;
 }
+
+#go-back-message {
+  margin-top: 20px;
+  background-color: #f7c8bfd8;
+  border-radius: 10px;
+}
