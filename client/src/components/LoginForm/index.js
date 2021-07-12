@@ -10,7 +10,17 @@ import {
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import Auth from "../../utils/auth";
+=======
+import AuthService from "../../utils/auth";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import Card from '../LoginCard';
+
+library.add(fas);
+
+>>>>>>> feature/css-jessica
 
 const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -42,8 +52,13 @@ const LoginForm = () => {
   };
 
   return (
+    
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
+      
       <Grid.Column style={{ maxWidth: 450 }}>
+      <Card />
+        <h2>Hello! Please log in to get started with Pro-Team.</h2>
+        
         <Header as="h2" class="button" textAlign="center"></Header>
         <Form size="large" onSubmit={handleFormSubmit}>
           <Segment stacked>
@@ -65,12 +80,12 @@ const LoginForm = () => {
               onChange={handleChange}
             />
 
-            <Button class="button" fluid size="large">
+            <Button className="button" fluid size="large" color='teal'>
               Log in
             </Button>
           </Segment>
         </Form>
-        <Message>
+        <Message color='teal'>
           New to us? <Link to="/signup">Sign Up</Link>
         </Message>
         {error && <div>Login Failed</div>}

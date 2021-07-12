@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Input } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import Card from '../LoginCard';
+// still need sub-headings that tell user how many characters to use for username and pw
 import auth from "../../utils/auth";
 // still need sub-headings that tell user how many character to use for username and pw
 
@@ -22,24 +26,28 @@ const SignUpForm = () => {
     console.error(e)
   }
     window.location.replace("/projects");
+
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <h3>All Fields are Required</h3>
+      <h2 className="sign-up-header">Sign Up for Pro-Team!</h2>
+      <div className='logo-card'><Card /></div>
+
+      <h3 className="sign-up-subtitle">The latest project management solution.</h3>
+      <h4 className="required-fields">All Fields are Required</h4>
+    
       <Form.Field
         required
         id="form-input-control-username"
         control={Input}
-        label="Username"
+        label="Username (must be 5-12 characters)"
         placeholder="Username"
-        error={{
-          content: "Please enter a valid username",
-          pointing: "below",
-        }}
+        width={6}
         name="username"
         value={state.name}
         onChange={handleChange}
+      
       />
       <Form.Field
         required
@@ -47,10 +55,7 @@ const SignUpForm = () => {
         control={Input}
         label="Email Address"
         placeholder="Email Address"
-        error={{
-          content: "Please enter a valid email address",
-          pointing: "below",
-        }}
+        width={6}
         name="email"
         value={state.email}
         onChange={handleChange}
@@ -59,12 +64,9 @@ const SignUpForm = () => {
         required
         id="form-input-control-password"
         control={Input}
-        label="Password"
+        label="Password (must be at least 5 characters)"
         placeholder="Password"
-        error={{
-          content: "Please enter a valid password",
-          pointing: "below",
-        }}
+        width={6}
         name="password"
         type="password"
         value={state.password}
@@ -74,6 +76,7 @@ const SignUpForm = () => {
         id="form-button-control-public"
         control={Button}
         content="Submit"
+        color="teal"
         // label="Label with htmlFor"
       />
       {error && <div>Something went wrong, please try again.</div>}

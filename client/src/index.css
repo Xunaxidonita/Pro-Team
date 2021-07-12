@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +10,36 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+.sign-up-header {
+  padding-top: 20px;
+  color: #479c9c;
 }
+
+.required-fields {
+  padding-top: 5px;
+  color: 	#d0705a;
+}
+
+.sign-up-subtitle {
+  font-size: smaller;
+  margin-top: 5px;
+}
+.logo-card {
+  float: right;
+}
+
+#homepage-link {
+  padding-left: 20px;
+  padding-top: 10px;
+  color: black;
+  
+}
+
+#logout-link {
+  padding-right: 20px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+

@@ -91,10 +91,10 @@ const ProjectForm = () => {
         onChange={handleChange}
         placeholder="Enter a description of the project"
       ></Form.Field>
-      <h3>Members:</h3>
+      <h5>Members:</h5>
       <Dropdown
         name="members"
-        placeholder="Select a programer"
+        placeholder="Select a programmer"
         fluid
         multiple
         selection
@@ -103,8 +103,12 @@ const ProjectForm = () => {
       />
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
+<<<<<<< HEAD
       <Button type="submit">Submit</Button>
       {error && <div>Something went wrong, Please reload and try again.</div>}
+=======
+      <Button type="submit" color='teal'>Submit</Button>
+>>>>>>> feature/css-jessica
     </Form>
   
   );
