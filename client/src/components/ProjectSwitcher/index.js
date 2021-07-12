@@ -20,7 +20,7 @@ const ProjectSwitcher = ({ projects, loading, children }) => {
             <Link to="/projects/new">Create New Project</Link>
           </Menu.Item>,
         ].concat(
-          projects? || [].map((project) => {
+          projects?.map((project) => {
             return (
               <Menu.Item as="a">
                 <Link to={`/projects/${project._id}`}>
