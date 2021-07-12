@@ -59,7 +59,7 @@ const ProjectForm = () => {
 
   const handleSubmit = async event => {
    event.preventDefault();
-   console.log(state);
+   
    try {
     await addProject({
       variables: state
