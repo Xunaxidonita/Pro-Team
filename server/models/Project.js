@@ -13,7 +13,7 @@ const projectSchema = new Schema(
     description: {
       type: String,
       require: "Please provide a description for you project",
-      minlength: 5,
+      minlength: 1,
       maxlength: 1024,
     },
     dueDate: {

@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "seed": "node seeders/seeds.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
     "apollo-server-express": "^2.25.2",
     "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
+    "faker": "^5.5.3",
     "graphql": "^15.5.1",
     "graphql-tag": "^2.12.5",
     "jsonwebtoken": "^8.5.1",

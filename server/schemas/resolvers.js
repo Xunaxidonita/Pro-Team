@@ -42,22 +42,21 @@ const resolvers = {
     },
 
     projects: async () => {
-      return Project.find().select("-__v");
+      return Project.find()
+      .select("-__v")
+      .populate('members');
     },
 
     project: async (parent, { _id }) => {
       console.log({ _id })
       return Project.findOne({ _id })
       .select("-__v")
-      .populate('members')
-      .populate('tasks');
+      .populate('members');
     },
 
     userTasks: async (parent, { username }) => {
       return User.findOne({ username })
-        .select("-password")
-        .select("tasks")
-        .populate("tasks");
+        .select("-password");
     },
 
     projTasks: async (parent, { _id }) => {
