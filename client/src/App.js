@@ -38,21 +38,11 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <LoginPage></LoginPage>
-          </Route>
-          <Route exact path="/signup">
-            <SignUpPage></SignUpPage>
-          </Route>
-          <Route exact path="/projects">
-            <ProjectsPage />
-          </Route>
-          <Route exact path="/projects/new">
-            <NewProjectPage />
-          </Route>
-          <Route path="/projects/:_id">
-            <ProjectViewerPage />
-          </Route>
+          <Route exact path="/" component={LoginPage} />          
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/projects" component={ProjectsPage} />
+          <Route exact path="/projects/new" component={NewProjectPage} />
+          <Route path="/projects/:_id" component={ProjectViewerPage} />
         </Switch>
       </Router>
     </ApolloProvider>
