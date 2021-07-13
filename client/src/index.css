@@ -1,0 +1,82 @@
+/* body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} */
+
+.sign-up-header {
+  padding-top: 20px;
+  color: #479c9c;
+}
+
+.required-fields {
+  padding-top: 5px;
+  color: 	#d0705a;
+}
+
+.sign-up-subtitle {
+  font-size: smaller;
+  margin-top: 5px;
+}
+.logo-card {
+  float: right;
+}
+
+#homepage-link {
+  padding-left: 20px;
+  padding-top: 10px;
+  color: black;
+  
+}
+
+#logout-link {
+  padding-right: 20px;
+  padding-top: 10px;
+  cursor: pointer;
+}
+
+#new-project-button {
+  margin-top: 20px;
+}
+
+#update-project-button {
+  margin-left: 12px;
+}
+.project-info, #project-desc  {
+  color: black;
+  }
+  
+#project-name {
+ 
+  color: #d0705a;
+}
+#project-status {
+  color: #479c9c;
+}
+#project-due-date {
+ font-size: large;
+  color: #bcd42a;
+}
+
+#create-new-project {
+  font-weight: 900;
+  font-size: medium;
+}
+
+#new-project-submit {
+  margin-top: 10px;
+}
+
+#go-back-message {
+  margin-top: 20px;
+  background-color: #f7c8bfd8;
+  border-radius: 10px;
+}
