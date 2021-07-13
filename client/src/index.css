@@ -80,3 +80,7 @@ code {
   background-color: #f7c8bfd8;
   border-radius: 10px;
 }
+
+#asterisk {
+  color: red;
+}

@@ -101,9 +101,10 @@ const ProjectForm = () => {
         options={members}
         onChange={handleMulti}
       />
+      <p><span id="asterisk">*</span> = required</p>
       <h3>Due Date:</h3>
       <Calendar name="dueDate" onSelect={handleSelect}></Calendar>
-      <Button type="submit" color='teal'>Submit</Button>
+      <Button type="submit" color='teal'id="new-project-submit">Submit</Button>
       {error && <div>Something went wrong, Please reload and try again.</div>}
     </Form>
   
