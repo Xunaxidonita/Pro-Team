@@ -17,13 +17,13 @@ This is a project-management application designed to help people working on grou
 
 ## Installation
 Instructions:
-Just visit https://agile-shore-63107.herokuapp.com/ 
+Visit (https://agile-shore-63107.herokuapp.com/) and sign up for an account. Then click "Create New Project" to get started.
 
 ## Usage
-Please see the videos above.
+To update the status of a project, click the name of the project in the sidebar on the left. Then write your message in the input box, and click Update.
 
 ## Credits
-Many thanks to Nate Ryan, Mason McGinley, John Baxter, tutorialspoint.com, and stackoverflow.com
+Many thanks to w3schools.com, color-hex.com, and stackoverflow.com. 
 
 ## License
 Project covered under [MIT license](https://choosealicense.com/licenses/mit/).
