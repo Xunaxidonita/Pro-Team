@@ -4,6 +4,7 @@
 ## Description
 This is a project-management application designed to help people working on group projects. Once a user has signed up, he can create a project and add other users to it, along with a description, status, and due date. All members of a particular project can see this information, so that each user can stay updated on the progress made. 
 
+![Screenshot of app](./screenshot.png "Pro-Team")
 
 
 ## Table of Contents
